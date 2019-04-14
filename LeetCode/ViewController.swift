@@ -3,7 +3,7 @@
 //  LeetCode
 //
 //  Created by 董伍 on 2019/2/21.
-//  Copyright © 2019 董伍. All rights reserved.
+//  Copyright © 2019 奇异的炸酱面. All rights reserved.
 //
 // https://www.cnblogs.com/strengthen/p/9895524.html
 
@@ -62,61 +62,9 @@ class ViewController: UIViewController {
 //        }
         
         
-        var a2 = [23,12,34,2,67]
-        self.选择排序(&a2)
+        var a2 = [23, 12, 34, 2, 67, 5, 43, 123, 432, 32, 44, 1, 31, 24, 21, 26, 13, 15, 16, 7, 8]
+        CNSSort.快速排序(&a2)
         print(a2)
-    }
-    
-    func 冒泡排序(_ arr: inout [Int]){
-        
-        var m = 0
-        
-        let c = arr.count - 1
-        for e in stride(from: c, to: 0, by: -1){
-            for s in 0..<e - 1{
-                if arr[s] > arr[s + 1]{
-                    m = arr[s + 1]
-                    arr[s + 1] = arr[s]
-                    arr[s] = m
-                }
-            }
-        }
-        
-        
-//        while c > 0{
-//            for s in 0..<c{
-//                print("\(c)   \(s)")
-//
-//                if arr[s] > arr[s + 1]{
-//                    m = arr[s + 1]
-//                    arr[s + 1] = arr[s]
-//                    arr[s] = m
-//                }
-//            }
-//
-//            c -= 1
-//        }
-    }
-    
-    /// 找到最小的数上浮
-    func 选择排序(_ arr: inout [Int]){
-        var dv = Int.min
-        var di = 0
-        
-        let c = arr.count
-        for s in 0..<c{
-            
-            dv = arr[s]
-            di = s
-            for i in s..<c{
-                if dv > arr[i]{
-                    dv = arr[i]
-                    di = i
-                }
-            }
-            arr[di] = arr[s]
-            arr[s] = dv
-        }
     }
 }
 

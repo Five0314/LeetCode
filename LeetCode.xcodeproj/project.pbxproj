@@ -13,6 +13,7 @@
 		BC4E8BA6221E519300AE92DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC4E8BA5221E519300AE92DE /* Assets.xcassets */; };
 		BC4E8BA9221E519300AE92DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC4E8BA7221E519300AE92DE /* LaunchScreen.storyboard */; };
 		BC4E8BB4221E519300AE92DE /* LeetCodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4E8BB3221E519300AE92DE /* LeetCodeTests.swift */; };
+		BCFBD69A2261D782006AF86B /* 排序.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFBD6992261D782006AF86B /* 排序.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		BC4E8BAF221E519300AE92DE /* LeetCodeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LeetCodeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC4E8BB3221E519300AE92DE /* LeetCodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeetCodeTests.swift; sourceTree = "<group>"; };
 		BC4E8BB5221E519300AE92DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BCFBD6992261D782006AF86B /* 排序.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "排序.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 			children = (
 				BC4E8B9E221E519100AE92DE /* AppDelegate.swift */,
 				BC4E8BA0221E519100AE92DE /* ViewController.swift */,
+				BCFBD6992261D782006AF86B /* 排序.swift */,
 				BC4E8BA2221E519100AE92DE /* Main.storyboard */,
 				BC4E8BA5221E519300AE92DE /* Assets.xcassets */,
 				BC4E8BA7221E519300AE92DE /* LaunchScreen.storyboard */,
@@ -197,6 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCFBD69A2261D782006AF86B /* 排序.swift in Sources */,
 				BC4E8BA1221E519100AE92DE /* ViewController.swift in Sources */,
 				BC4E8B9F221E519100AE92DE /* AppDelegate.swift in Sources */,
 			);
