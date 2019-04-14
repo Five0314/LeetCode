@@ -62,9 +62,12 @@ class ViewController: UIViewController {
 //        }
         
         
-        var a2 = [23, 12, 34, 2, 67, 5, 43, 123, 432, 32, 44, 1, 31, 24, 21, 26, 13, 15, 16, 7, 8]
-        CNSSort.快速排序(&a2)
-        print(a2)
+        var a = [23, 12, 34, 2, 67, 5, 43, 123, 432, 32, 44, 1, 31, 24, 21, 26, 13, 15, 16, 7, 8]
+        print(Date().timeIntervalSince1970)
+        CNSSort.希尔排序(&a)
+//        CNSSort.插入排序(&a)
+        print(Date().timeIntervalSince1970)
+        print(a)
     }
 }
 
