@@ -137,6 +137,109 @@ extension LeedCode{
         return rv
     }
     
+    /// 验证回文串
+    func _125(_ s: String) -> Bool{
+        guard let cs = s.cString(using: .ascii)?.filter({ (item) -> Bool in
+            switch item {
+            case 48...57:
+                return true
+                
+            case 65...90: // A ~ Z
+                return true
+                
+            case 97...122: // a ~ z
+                return true
+                
+            default:
+                return false
+            }
+        }) else{
+            return true
+        }
+        
+        let c = cs.count - 1
+        
+        if c <= 1{
+            return true
+        }
+        
+        var li = 0
+        var ri = c
+        
+        var lv = self._125_is数字或字母(cs.first)
+        var rv = self._125_is数字或字母(cs.last)
+        
+        while li <= ri{
+            
+            if let _lv = lv, let _rv = rv{
+                if _lv != _rv{
+                    return false
+                }
+                else{
+                    li += 1
+                    if li <= c{
+                        lv = self._125_is数字或字母(cs[li])
+                    }
+                    else{
+                        lv = nil
+                    }
+                    
+                    ri -= 1
+                    if ri >= 0{
+                        rv = self._125_is数字或字母(cs[ri])
+                    }
+                    else{
+                        rv = nil
+                    }
+                }
+            }
+            
+            if lv == nil{
+                li += 1
+                if li <= c{
+                    lv = self._125_is数字或字母(cs[li])
+                }
+                else{
+                    lv = nil
+                }
+            }
+            
+            if rv == nil{
+                ri -= 1
+                if ri >= 0{
+                    rv = self._125_is数字或字母(cs[ri])
+                }
+                else{
+                    rv = nil
+                }
+            }
+        }
+
+        return true
+    }
+    
+    func _125_is数字或字母(_ char: CChar?) -> CChar?{
+        guard let v = char else{
+            return nil
+        }
+        
+        switch v {
+        case 48...57:
+            return v
+            
+        case 65...90: // A ~ Z
+            return v + 32
+            
+        case 97...122: // a ~ z
+            return v
+            
+        default:
+            return nil
+        }
+    }
+    
+    
+    
     /// 罗马数字转整数
     func _58(_ s: String) -> Int {
         let items = s.components(separatedBy: " ")
@@ -372,6 +475,56 @@ extension LeedCode{
 //MARK: 困难
 extension LeedCode{
     
+    /// 寻找两个有序数组的中位数
+    func _4(_ arr1: [Int], _ arr2: [Int]) -> Double{
+        let c1 = arr1.count
+        let c2 = arr2.count
+        
+        let mi = c1 + c2
+        let isDoubleCount = mi % 2 == 0
+        
+        let mi2 = mi / 2
+        let mi1 = isDoubleCount ? mi2 - 1 : mi2
+        
+        // h奇数
+        var i1 = 0
+        var i2 = 0
+        
+        var v1 = arr1[0]
+        var v2 = arr2[0]
+        
+        while true{
+            if isDoubleCount{
+                if v1 == mi1 && v2 == mi2{
+                    return Double(arr1[v1] + arr2[v2]) / 2
+                }
+            }
+            else{
+                if v1 == mi1{
+                    return Double(arr1[v1])
+                }
+                
+                if v2 == mi2{
+                    return Double(arr2[v2])
+                }
+            }
+            
+            if v1 < v2{
+                i1 += 1
+                
+                if i1 < c1{
+                    v1 = arr1[i1]
+                }
+            }
+            else{
+                i2 += 1
+                
+                if i2 < c2{
+                    v2 = arr2[i2]
+                }
+            }
+        }
+    }
     
 // KMP算法的核心，是一个被称为部分匹配表(Partial Match Table)的数组。
     

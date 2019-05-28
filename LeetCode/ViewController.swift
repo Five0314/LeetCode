@@ -14,7 +14,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.回文()
+//        self.回文()
+        self._4()
+    }
+    
+    func _4(){
+        let arr1 = [1, 2]
+        let arr2 = [3, 4]
+        
+        print(LeedCode.shared._4(arr1, arr2))
     }
     
     func 回文(){
@@ -23,13 +31,13 @@ class ViewController: UIViewController {
         
 //        let a = ["aacecaaa"]
 //        let b = ["aaacecaaa"]
-        let a = ["adcba"]
-        let b = ["abcdadcba"]
-        
-        for (i, item) in a.enumerated(){
-            let v = LeedCode.shared._214(item)
-            print("\(v == b[i]) : \(v)   \(b[i])")
-        }
+//        let a = ["adcba"]
+//        let b = ["abcdadcba"]
+//
+//        for (i, item) in a.enumerated(){
+//            let v = LeedCode.shared._214(item)
+//            print("\(v == b[i]) : \(v)   \(b[i])")
+//        }
         
         //            t1 = Date().timeIntervalSince1970
         //            for (i, item) in a.enumerated(){
@@ -53,6 +61,9 @@ class ViewController: UIViewController {
 //            print(" ----- KMP \(Date().timeIntervalSince1970 - t2) ")
 //        }
 
+        
+        let v =  "ab"
+        print(LeedCode.shared._125(v))
     }
     
     func 排序(){
