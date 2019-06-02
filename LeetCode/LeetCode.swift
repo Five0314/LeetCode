@@ -274,6 +274,30 @@ extension LeedCode{
         return []
     }
     
+    /// 求众数 - 摩尔投票发
+    func _169(_ arr: [Int]) -> Int{
+        
+        var c: Int = 0
+        var rv: Int = 0
+        
+        for item in arr{
+            if c == 0{
+                c = 1
+                rv = item
+            }
+            else{
+                if rv == item{
+                    c += 1
+                }
+                else{
+                    c -= 1
+                }
+            }
+        }
+        
+        return rv
+    }
+    
     /// 两数之和 II - 输入有序数组
     func _653(_ root: TreeNode?, _ k: Int) -> Bool {
         var s: Set<Int> = []
