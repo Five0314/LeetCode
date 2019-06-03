@@ -14,12 +14,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        var num1: [Int] = [1, 2, 3, 0, 0, 0]
+        let num2: [Int] = [4, 5, 6]
+        LeedCode.shared._88(&num1, 3, num2, 3)
+        print(num1)
     }
     
     func 排序(){
         var a = [23, 12, 34, 2, 67, 5, 43, 123, 432, 32, 44, 1, 31, 24, 21, 26, 13, 15, 16, 7, 8]
         print(Date().timeIntervalSince1970)
-        CNSSort.希尔排序(&a)
+        CNSSort.shared.希尔排序(&a)
         //        CNSSort.插入排序(&a)
         print(Date().timeIntervalSince1970)
         print(a)

@@ -8,6 +8,17 @@
 
 import UIKit
 
+//func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+//    switch (lhs, rhs) {
+//    case let (l?, r?):
+//        return l < r
+//    case (nil, _?):
+//        return true
+//    default:
+//        return false
+//    }
+//}
+
 class LeedCode{
     static var shared = LeedCode.init()
 }
@@ -181,6 +192,59 @@ extension LeedCode{
         
         return rv
     }
+    
+    /// 合并两个有序数组
+    func _88(_ nums1: inout [Int], _ m: Int, _ nums2: [Int], _ n: Int){
+        var i1 = m - 1
+        var i2 = n - 1
+        var k = m + n - 1
+
+        while i1 >= 0 && i2 >= 0 {
+            if nums1[i1] > nums2[i2] {
+                nums1[k] = nums1[i1]
+                k -= 1
+                i1 -= 1
+            } else {
+                nums1[k] = nums2[i2]
+                k -= 1
+                i2 -= 1
+            }
+        }
+
+        if i2 >= 0 { // 如果 i1 >= 0，说明nums2 的内容已经用完了，说明大的都搞定了，就剩下 nums1 中的小的了，由由于nums1中的数据已经排序好了，就没必要再排序了
+            for t in 0...i2 {
+                nums1[t] = nums2[t]
+            }
+        }
+    }
+    
+//    /// 合并两个有序数组 - 相比较上面的一个，部分情况下会多遍历几次，没有有效的利用nums1中的数据已经是有序的这一条件
+//    func _88(_ nums1: inout [Int], _ m: Int, _ nums2: [Int], _ n: Int){
+//        var k = m + n - 1
+//        
+//        var i2 = n - 1
+//        for i in stride(from: m - 1, through: 0, by: -1){
+//            while i2 >= 0{
+//                if nums2[i2] > nums1[i]{
+//                    nums1[k] = nums2[i2]
+//                    i2 -= 1
+//                    k -= 1
+//                }
+//                else{
+//                    break
+//                }
+//            }
+//            
+//            nums1[k] = nums1[i]
+//            k -= 1
+//        }
+//        
+//        if i2 >= 0{
+//            for i in 0...i2{
+//                nums1[i] = nums2[i]
+//            }
+//        }
+//    }
     
     /// 验证回文串
     func _125(_ s: String) -> Bool{
