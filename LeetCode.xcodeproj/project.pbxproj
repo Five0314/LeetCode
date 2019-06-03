@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC2CE9E022A49DB100124DD6 /* 堆排序.gif in Resources */ = {isa = PBXBuildFile; fileRef = BC2CE9D622A49DB100124DD6 /* 堆排序.gif */; };
+		BC2CE9E122A49DB100124DD6 /* 插入排序.gif in Resources */ = {isa = PBXBuildFile; fileRef = BC2CE9D722A49DB100124DD6 /* 插入排序.gif */; };
+		BC2CE9E222A49DB100124DD6 /* 冒泡排序.gif in Resources */ = {isa = PBXBuildFile; fileRef = BC2CE9D822A49DB100124DD6 /* 冒泡排序.gif */; };
+		BC2CE9E322A49DB100124DD6 /* 基数排序.gif in Resources */ = {isa = PBXBuildFile; fileRef = BC2CE9D922A49DB100124DD6 /* 基数排序.gif */; };
+		BC2CE9E422A49DB100124DD6 /* 计数排序.gif in Resources */ = {isa = PBXBuildFile; fileRef = BC2CE9DA22A49DB100124DD6 /* 计数排序.gif */; };
+		BC2CE9E522A49DB100124DD6 /* 希尔排序.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BC2CE9DB22A49DB100124DD6 /* 希尔排序.jpg */; };
+		BC2CE9E622A49DB100124DD6 /* 快速排序.gif in Resources */ = {isa = PBXBuildFile; fileRef = BC2CE9DC22A49DB100124DD6 /* 快速排序.gif */; };
+		BC2CE9E722A49DB100124DD6 /* 选择排序.gif in Resources */ = {isa = PBXBuildFile; fileRef = BC2CE9DD22A49DB100124DD6 /* 选择排序.gif */; };
+		BC2CE9E822A49DB100124DD6 /* 归并排序.gif in Resources */ = {isa = PBXBuildFile; fileRef = BC2CE9DE22A49DB100124DD6 /* 归并排序.gif */; };
+		BC2CE9E922A49DB100124DD6 /* 桶排序.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BC2CE9DF22A49DB100124DD6 /* 桶排序.jpg */; };
 		BC4E8B9F221E519100AE92DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4E8B9E221E519100AE92DE /* AppDelegate.swift */; };
 		BC4E8BA1221E519100AE92DE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4E8BA0221E519100AE92DE /* ViewController.swift */; };
 		BC4E8BA4221E519100AE92DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC4E8BA2221E519100AE92DE /* Main.storyboard */; };
@@ -28,6 +38,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BC2CE9D622A49DB100124DD6 /* 堆排序.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "堆排序.gif"; sourceTree = "<group>"; };
+		BC2CE9D722A49DB100124DD6 /* 插入排序.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "插入排序.gif"; sourceTree = "<group>"; };
+		BC2CE9D822A49DB100124DD6 /* 冒泡排序.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "冒泡排序.gif"; sourceTree = "<group>"; };
+		BC2CE9D922A49DB100124DD6 /* 基数排序.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "基数排序.gif"; sourceTree = "<group>"; };
+		BC2CE9DA22A49DB100124DD6 /* 计数排序.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "计数排序.gif"; sourceTree = "<group>"; };
+		BC2CE9DB22A49DB100124DD6 /* 希尔排序.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "希尔排序.jpg"; sourceTree = "<group>"; };
+		BC2CE9DC22A49DB100124DD6 /* 快速排序.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "快速排序.gif"; sourceTree = "<group>"; };
+		BC2CE9DD22A49DB100124DD6 /* 选择排序.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "选择排序.gif"; sourceTree = "<group>"; };
+		BC2CE9DE22A49DB100124DD6 /* 归并排序.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "归并排序.gif"; sourceTree = "<group>"; };
+		BC2CE9DF22A49DB100124DD6 /* 桶排序.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "桶排序.jpg"; sourceTree = "<group>"; };
 		BC4E8B9B221E519100AE92DE /* LeetCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LeetCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC4E8B9E221E519100AE92DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC4E8BA0221E519100AE92DE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +80,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BC2CE9D522A49DB100124DD6 /* 排序演示图 */ = {
+			isa = PBXGroup;
+			children = (
+				BC2CE9D622A49DB100124DD6 /* 堆排序.gif */,
+				BC2CE9D722A49DB100124DD6 /* 插入排序.gif */,
+				BC2CE9D822A49DB100124DD6 /* 冒泡排序.gif */,
+				BC2CE9D922A49DB100124DD6 /* 基数排序.gif */,
+				BC2CE9DA22A49DB100124DD6 /* 计数排序.gif */,
+				BC2CE9DB22A49DB100124DD6 /* 希尔排序.jpg */,
+				BC2CE9DC22A49DB100124DD6 /* 快速排序.gif */,
+				BC2CE9DD22A49DB100124DD6 /* 选择排序.gif */,
+				BC2CE9DE22A49DB100124DD6 /* 归并排序.gif */,
+				BC2CE9DF22A49DB100124DD6 /* 桶排序.jpg */,
+			);
+			path = "排序演示图";
+			sourceTree = "<group>";
+		};
 		BC4E8B92221E519100AE92DE = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +121,7 @@
 				BC4E8B9E221E519100AE92DE /* AppDelegate.swift */,
 				BC4E8BA0221E519100AE92DE /* ViewController.swift */,
 				BCFBD6992261D782006AF86B /* 排序.swift */,
+				BC2CE9D522A49DB100124DD6 /* 排序演示图 */,
 				BC516C05226A8C17006E1745 /* LeetCode.swift */,
 				BC4E8BA2221E519100AE92DE /* Main.storyboard */,
 				BC4E8BA5221E519300AE92DE /* Assets.xcassets */,
@@ -183,8 +221,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC2CE9E322A49DB100124DD6 /* 基数排序.gif in Resources */,
+				BC2CE9E922A49DB100124DD6 /* 桶排序.jpg in Resources */,
 				BC4E8BA9221E519300AE92DE /* LaunchScreen.storyboard in Resources */,
 				BC4E8BA6221E519300AE92DE /* Assets.xcassets in Resources */,
+				BC2CE9E222A49DB100124DD6 /* 冒泡排序.gif in Resources */,
+				BC2CE9E522A49DB100124DD6 /* 希尔排序.jpg in Resources */,
+				BC2CE9E022A49DB100124DD6 /* 堆排序.gif in Resources */,
+				BC2CE9E722A49DB100124DD6 /* 选择排序.gif in Resources */,
+				BC2CE9E122A49DB100124DD6 /* 插入排序.gif in Resources */,
+				BC2CE9E622A49DB100124DD6 /* 快速排序.gif in Resources */,
+				BC2CE9E822A49DB100124DD6 /* 归并排序.gif in Resources */,
+				BC2CE9E422A49DB100124DD6 /* 计数排序.gif in Resources */,
 				BC4E8BA4221E519100AE92DE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
