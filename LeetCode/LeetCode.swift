@@ -12,6 +12,14 @@ class LeedCode{
     static var shared = LeedCode.init()
 }
 
+extension String{
+    func substring(location: Int, length: Int) -> String{
+        let si = self.index(self.startIndex, offsetBy: location)
+        let ei = self.index(si, offsetBy: length)
+        return String(self[si..<ei])
+    }
+}
+
 
 //MARK: 简单
 extension LeedCode{
@@ -88,6 +96,43 @@ extension LeedCode{
         }
         
         return rv
+    }
+    
+    /// 最长公共前缀
+    func _14(_ arr: [String]) -> String{
+        if arr.isEmpty{
+            return ""
+        }
+        
+        let ss = arr[0]
+        
+        for i in 0..<ss.count{
+            let cs = ss.substring(location: i, length: 1)
+            
+            for item in arr{
+                if item.count > i{
+                    let c = item.substring(location: i, length: 1)
+                    if c != cs{
+                        return String(ss.prefix(i))
+                    }
+                }
+                else{
+                    return String(ss.prefix(i))
+                }
+            }
+        }
+        
+        return ss
+    }
+    
+    func _14_2(_ arr: [String], commonPrefix: String) -> Bool{
+        for item in arr{
+            if !item.hasPrefix(commonPrefix){
+                return false
+            }
+        }
+        
+        return true
     }
     
     public class ListNode_21 {
@@ -201,7 +246,6 @@ extension LeedCode{
             self.right = nil
         }
     }
-    
     
     /// 重复 N 次的元素
     func _961(_ A: [Int]) -> Int {
@@ -372,6 +416,10 @@ extension LeedCode{
 //MARK: 困难
 extension LeedCode{
     
+    func _4(){
+        
+    }
+    
     
 // KMP算法的核心，是一个被称为部分匹配表(Partial Match Table)的数组。
     
@@ -423,7 +471,9 @@ extension LeedCode{
                 k = next[k]
             }
         }
-        return String(r[r.startIndex ..< String.Index(encodedOffset: r.endIndex.encodedOffset - next[pCount])]) + s
+        
+        return String(r[r.startIndex ..< String.Index.init(utf16Offset: r.endIndex.utf16Offset(in: r) - next[pCount], in: r)]) + s
+//        return String(r[r.startIndex ..< String.Index(encodedOffset: r.endIndex.encodedOffset - next[pCount])]) + s
     }
     
     func _214_对称轴寻找回文串(_ s: String) -> String {

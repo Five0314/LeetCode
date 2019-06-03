@@ -10,47 +10,30 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.回文()
+        
+        print(LeedCode.shared._14(["aa", "b"]))
+        
+        print(LeedCode.shared._3("abcabcdbb"))
     }
     
     func 回文(){
-//        let a = ["", "a", "aa", "ba", "aaa", "aaaa", "aaaaa", "adcba", "ababbbabbaba", "babbbabbaba", "aaaabbaa"]
-//        let b = ["", "a", "aa", "aba", "aaa", "aaaa", "aaaaa", "abcdadcba", "ababbabbbababbbabbaba", "ababbabbbabbaba", "aabbaaaabbaa"]
-        
-//        let a = ["aacecaaa"]
-//        let b = ["aaacecaaa"]
-        let a = ["adcba"]
-        let b = ["abcdadcba"]
-        
-        for (i, item) in a.enumerated(){
-            let v = LeedCode.shared._214(item)
-            print("\(v == b[i]) : \(v)   \(b[i])")
-        }
-        
-        //            t1 = Date().timeIntervalSince1970
-        //            for (i, item) in a.enumerated(){
-        //                let v = self._214_(item)
-        //                print("\(v == b[i]) : \(v)   \(b[i])")
-        //            }
-        
-
-        
-        
 //        DispatchQueue.global().async {
 //            let a = ["", "a", "aa", "ba", "aaa", "aaaa", "aaaaa", "adcba", "ababbbabbaba", "babbbabbaba", "aaaabbaa"]
 //            let b = ["", "a", "aa", "aba", "aaa", "aaaa", "aaaaa", "abcdadcba", "ababbabbbababbbabbaba", "ababbabbbabbaba", "aabbaaaabbaa"]
-//
-//            let t2 = Date().timeIntervalSince1970
-//            for (i, item) in a.enumerated(){
-//                let v = LeedCode.shared._214(item)
-//                //                print("KMP \(v == b[i]) : \(v)   \(b[i])")
-//            }
-//
-//            print(" ----- KMP \(Date().timeIntervalSince1970 - t2) ")
+            
+            let a = ["aaaabbaa"]
+            let b = ["aabbaaaabbaa"]
+
+            for (i, item) in a.enumerated(){
+                let v = LeedCode.shared._214(item)
+                print("KMP \(v == b[i]) : \(v)   \(b[i])")
+            }
+
 //        }
 
     }
