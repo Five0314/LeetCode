@@ -19,8 +19,8 @@ import UIKit
 //    }
 //}
 
-class LeedCode{
-    static var shared = LeedCode.init()
+class LeetCode{
+    static var shared = LeetCode.init()
 }
 
 extension String{
@@ -33,7 +33,7 @@ extension String{
 
 
 //MARK: 简单
-extension LeedCode{
+extension LeetCode{
     /// 两数之和
     func _1(_ nums: [Int], _ target: Int) -> [Int] {
         let s = Set(nums)
@@ -191,6 +191,89 @@ extension LeedCode{
         }
         
         return rv
+    }
+    
+    /// 搜索插入位置 - 二分查找
+    func _35(_ nums: [Int], _ target: Int) -> Int {
+//        return self._35_递归(nums, target, left: 0, right: nums.count - 1)
+        
+        var l: Int = 0
+        var r: Int = nums.count - 1
+        var m: Int = 0
+
+        while l < r{
+            m = (l + r) / 2
+
+            if nums[m] < target{ // 后半段
+                l = m + 1
+            }
+            else if nums[m] > target{ // 前半段
+                r = m
+            }
+            else{
+                return m
+            }
+        }
+
+        if nums[r] == target{
+            return r
+        }
+        else if nums[r] > target{
+            return r
+        }
+        else{
+            return r + 1
+        }
+    }
+    
+//    func _35_递归(_ nums: [Int], _ target: Int, left: Int, right: Int) -> Int {
+//        if right - 1 < left{
+//            if nums[right] <= target{
+//                return right + 1
+//            }
+//
+//            if nums[left] >= target{
+//                return left
+//            }
+//
+//            return right
+//        }
+//
+//        let mi: Int = (left + right) / 2
+//
+//        if nums[mi] < target{ // 后半段
+//            return self._35_递归(nums, target, left: mi, right: right)
+//        }
+//        else if nums[mi] > target{ // 前半段
+//            return self._35_递归(nums, target, left: left, right: mi)
+//        }
+//        else{
+//            return mi
+//        }
+//    }
+    
+    /// 最大子序和 - 计算每个节点为结尾时的最大值 - 动态规划
+    func _53(_ nums: [Int]) -> Int{
+        
+        var maxSUM: Int = nums[0]
+        var currentSUM: Int = nums[0]
+        
+        for i in 1..<nums.count{
+            currentSUM = max(nums[i], currentSUM + nums[i])
+            
+            if maxSUM < currentSUM{
+                maxSUM = currentSUM
+            }
+        }
+        return maxSUM
+    }
+    
+    /// 最大子序和 - 分治法
+    func _53_分治法(_ nums: [Int]) -> Int{
+        
+        var maxSUM: Int = nums[0]
+        
+        return maxSUM
     }
     
     /// 合并两个有序数组
@@ -405,6 +488,30 @@ extension LeedCode{
         return rv
     }
     
+    /// 第一个错误的版本
+    func _278(_ n: Int) -> Int {
+        var l: Int = 1
+        var r: Int = n
+        var m: Int = 0
+        
+        while l < r{
+            m = (l + r) / 2
+            
+            if self.isBadVersion(m){
+                r = m
+            }
+            else{
+                l = m + 1
+            }
+        }
+        
+        return l
+    }
+    
+    fileprivate func isBadVersion(_ i: Int) -> Bool{
+        return i >= 3
+    }
+    
     /// 两数之和 II - 输入有序数组
     func _653(_ root: TreeNode?, _ k: Int) -> Bool {
         var s: Set<Int> = []
@@ -455,7 +562,7 @@ extension LeedCode{
 }
 
 //MARK: 中等
-extension LeedCode{
+extension LeetCode{
     /// 两数相加
     func _2(_ l1: ListNode?, _ l2: ListNode?) -> ListNode? {
         var rootNode: ListNode?
@@ -531,7 +638,7 @@ extension LeedCode{
         return maxLength
     }
     
-    /// 整数反转
+    /// 整数转罗马数字
     func _12(_ num: Int) -> String {
         let values = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
         
@@ -601,7 +708,7 @@ extension LeedCode{
 }
 
 //MARK: 困难
-extension LeedCode{
+extension LeetCode{
     
     /// 寻找两个有序数组的中位数
     func _4(_ arr1: [Int], _ arr2: [Int]) -> Double{
@@ -752,6 +859,6 @@ extension LeedCode{
 }
 
 //MARK: 回文
-extension LeedCode{
+extension LeetCode{
     /// _9
 }

@@ -14,19 +14,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        var arr = [9,8,7,6,5,4,3,2,1]
+//        let nums = [11, 22, 33, 44]
+//        let target = 33
         
-//        CNSSort.shared.归并排序(&arr)
+        let nums = [1, 2, -1]
+//        let nums = [-2,1,-3,4,-1,2,1,-5,4]
         
-        var arr = [5, 2, 9, 4, 7, 6, 1, 3, 8]
-        
-        CNSSort.shared.堆排序(&arr)
-        
-//        var num1: [Int] = [1, 2, 3, 0, 0, 0]
-//        let num2: [Int] = [4, 5, 6]
-//        LeedCode.shared._88(&num1, 3, num2, 3)
-        
-        print(arr)
+        print(LeetCode.shared._53(nums))
     }
     
     func 排序(){

@@ -123,10 +123,10 @@
 				BCFBD6992261D782006AF86B /* 排序.swift */,
 				BC2CE9D522A49DB100124DD6 /* 排序演示图 */,
 				BC516C05226A8C17006E1745 /* LeetCode.swift */,
-				BC4E8BA2221E519100AE92DE /* Main.storyboard */,
 				BC4E8BA5221E519300AE92DE /* Assets.xcassets */,
 				BC4E8BA7221E519300AE92DE /* LaunchScreen.storyboard */,
 				BC4E8BAA221E519300AE92DE /* Info.plist */,
+				BC4E8BA2221E519100AE92DE /* Main.storyboard */,
 			);
 			path = LeetCode;
 			sourceTree = "<group>";
