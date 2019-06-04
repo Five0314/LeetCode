@@ -154,46 +154,130 @@ class CNSSort{
         return [(l, startIndexOfBiggerValue - 2), (startIndexOfBiggerValue, r)]
     }
     
+    /// 采用分治法 - 将已有序的子序列合并，得到完全有序的序列
     func 归并排序(_ arr: inout [Int]){
-//        let c = arr.count - 1
-//        if c <= 1{
-//            return
-//        }
-//
-//        var d = 1
-//        var l = 0
-//        var r = l + d
-//
-//        while true{
-//            if r >= c, l == 0{
-//                break
-//            }
-//
-//            self.归并排序_分组(&arr, left: l, right: r)
-//
-//            if r >= c{
-//                if l == 0{
-//                    break
-//                }
-//                else{
-//                    d *= 2
-//                    l = 0
-//                    r = l
-//                }
-//            }
-//            else{
-//                l = r + 1
-//                r = min(c, l + d)
-//            }
-//        }
-    }
-    
-    fileprivate func 归并排序_递归(_ arr: inout [Int], left : Int, right: Int){
+        var temp: [Int] = [Int].init(repeating: 0, count: arr.count)
         
+        let c = arr.count - 1
+        self.归并排序_递归(&arr, left: 0, right: c, temp: &temp)
     }
     
+    fileprivate func 归并排序_递归(_ arr: inout [Int], left: Int, right: Int, temp: inout [Int]){
+        if right > left{
+            let mi = (right + left) / 2
+            self.归并排序_递归(&arr, left: left, right: mi, temp: &temp)
+            self.归并排序_递归(&arr, left: mi + 1, right: right, temp: &temp)
+            
+            self.归并排序_子排序(&arr, r1: (left, mi), r2: (mi + 1, right), temp: &temp)
+        }
+    }
+    
+    fileprivate func 归并排序_子排序(_ arr: inout [Int], r1 : (Int, Int), r2: (Int, Int), temp: inout [Int]){
+        
+        var m: Int = r1.0
+        var i1: Int = r1.0
+        var i2: Int = r2.0
+        
+        while i1 <= r1.1 && i2 <= r2.1{
+            if arr[i2] < arr[i1]{
+                temp[m] = arr[i2]
+                i2 += 1
+            }
+            else{
+                temp[m] = arr[i1]
+                i1 += 1
+            }
+
+            m += 1
+        }
+
+        if i1 <= r1.1{
+            for i in i1...r1.1{
+                temp[m] = arr[i]
+                m += 1
+            }
+        }
+        
+        // 排序好的值还原至原数组中
+        for i in r1.0...r2.1{
+            arr[i] = temp[i]
+        }
+    }
+    
+    /// 二叉树
     func 堆排序(_ arr: inout [Int]){
+        var temp: Int = 0
+        var ei = arr.count - 1
         
+        for i in stride(from: ei, to: 0, by: -1){
+            self.堆排序_大数上浮(&arr, index: i, temp: &temp)
+        }
+        
+        
+        while ei > 0{
+            self.堆排序_数据交换(&arr, index1: 0, index2: ei, temp: &temp)
+            
+            ei -= 1
+            
+            self.堆排序_小数下沉(&arr, index: 0, maxIndex: ei, temp: &temp)
+        }
+    }
+    
+    func 堆排序_大数上浮(_ arr: inout [Int], index: Int, temp: inout Int) {
+        guard index > 0 else {
+            return
+        }
+        
+        let parentIndex = (index - 1) / 2
+        if arr[parentIndex] < arr[index]{
+            temp = arr[parentIndex]
+            arr[parentIndex] = arr[index]
+            arr[index] = temp
+            
+            self.堆排序_大数上浮(&arr, index: parentIndex, temp: &temp)
+        }
+    }
+    
+    func 堆排序_小数下沉(_ arr: inout [Int], index: Int, maxIndex: Int, temp: inout Int) {
+        let lidx: Int = index * 2 + 1
+        let ridx: Int = lidx + 1
+        
+        if lidx <= maxIndex && ridx <= maxIndex{
+            if arr[ridx] > arr[lidx]{
+                if arr[index] < arr[ridx]{
+                    self.堆排序_数据交换(&arr, index1: index, index2: ridx, temp: &temp)
+                    
+                    self.堆排序_小数下沉(&arr, index: ridx, maxIndex: maxIndex, temp: &temp)
+                }
+            }
+            else{
+                if arr[index] < arr[lidx]{
+                    self.堆排序_数据交换(&arr, index1: index, index2: lidx, temp: &temp)
+                    
+                    self.堆排序_小数下沉(&arr, index: lidx, maxIndex: maxIndex, temp: &temp)
+                }
+            }
+        }
+        else if lidx <= maxIndex {
+            if arr[index] < arr[lidx]{
+                self.堆排序_数据交换(&arr, index1: index, index2: lidx, temp: &temp)
+                
+                self.堆排序_小数下沉(&arr, index: lidx, maxIndex: maxIndex, temp: &temp)
+            }
+        }
+        else if ridx <= maxIndex{
+            if arr[index] < arr[ridx]{
+                self.堆排序_数据交换(&arr, index1: index, index2: ridx, temp: &temp)
+                
+                self.堆排序_小数下沉(&arr, index: ridx, maxIndex: maxIndex, temp: &temp)
+            }
+        }
+    }
+    
+    func 堆排序_数据交换(_ arr: inout [Int], index1: Int, index2: Int, temp: inout Int){
+        temp = arr[index1]
+        arr[index1] = arr[index2]
+        arr[index2] = temp
     }
     
     func 计数排序(_ arr: inout [Int]){

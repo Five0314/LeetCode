@@ -218,33 +218,33 @@ extension LeedCode{
         }
     }
     
-//    /// 合并两个有序数组 - 相比较上面的一个，部分情况下会多遍历几次，没有有效的利用nums1中的数据已经是有序的这一条件
-//    func _88(_ nums1: inout [Int], _ m: Int, _ nums2: [Int], _ n: Int){
-//        var k = m + n - 1
-//        
-//        var i2 = n - 1
-//        for i in stride(from: m - 1, through: 0, by: -1){
-//            while i2 >= 0{
-//                if nums2[i2] > nums1[i]{
-//                    nums1[k] = nums2[i2]
-//                    i2 -= 1
-//                    k -= 1
-//                }
-//                else{
-//                    break
-//                }
-//            }
-//            
-//            nums1[k] = nums1[i]
-//            k -= 1
-//        }
-//        
-//        if i2 >= 0{
-//            for i in 0...i2{
-//                nums1[i] = nums2[i]
-//            }
-//        }
-//    }
+    /// 合并两个有序数组 - 相比较上面的一个，部分情况下会多遍历几次，没有有效的利用nums1中的数据已经是有序的这一条件
+    func _88_2(_ nums1: inout [Int], _ m: Int, _ nums2: [Int], _ n: Int){
+        var k = m + n - 1
+        
+        var i2 = n - 1
+        for i in stride(from: m - 1, through: 0, by: -1){
+            while i2 >= 0{
+                if nums2[i2] > nums1[i]{
+                    nums1[k] = nums2[i2]
+                    i2 -= 1
+                    k -= 1
+                }
+                else{
+                    break
+                }
+            }
+            
+            nums1[k] = nums1[i]
+            k -= 1
+        }
+        
+        if i2 >= 0{
+            for i in 0...i2{
+                nums1[i] = nums2[i]
+            }
+        }
+    }
     
     /// 验证回文串
     func _125(_ s: String) -> Bool{
@@ -346,8 +346,6 @@ extension LeedCode{
             return nil
         }
     }
-    
-    
     
     /// 罗马数字转整数
     func _58(_ s: String) -> Int {
