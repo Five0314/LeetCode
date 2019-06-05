@@ -443,6 +443,71 @@ extension LeetCode{
         return 0
     }
     
+    /// 买卖股票的最佳时机
+    func _121(_ prices: [Int]) -> Int{
+        
+        var min: Int = Int.max
+        var maxProfit: Int = 0
+        
+        var difference: Int = 0
+        
+        for item in prices{
+            difference = item - min
+            
+            if difference > 0{
+                if maxProfit < difference{
+                    maxProfit = difference
+                }
+            }
+            
+            if min > item{
+                min = item
+            }
+        }
+        
+        return maxProfit
+    }
+    
+    /// 买卖股票的最佳时机II
+    func _122(_ prices: [Int]) -> Int{
+        
+        let c = prices.count - 1
+        if c < 1{
+            return 0
+        }
+
+        var profit: Int = 0
+        
+        var buy: Int = -1
+        
+        var next: Int = 0
+        
+        for i in 0..<c{
+            
+            next = prices[i + 1]
+            
+            if buy == -1{ // 还没买过，只要明天的比今天的高，说明今天买了就会有收益
+                if prices[i] < next{
+                    buy = prices[i]
+                }
+            }
+            else{ // 既然买过了，就开始研究啥时候卖了 - 只要明天的比今天的低，就可以卖，明天比今天的高就等到明天再卖吗
+                if prices[i] > next{
+                    profit += prices[i] - buy
+                    buy = -1
+                }
+            }
+        }
+        
+        if buy != -1{ // 还有没卖掉了，和最后一天的价格进行比较
+            if buy < prices[c]{
+                profit += prices[c] - buy
+            }
+        }
+        
+        return profit
+    }
+    
     /// 两数之和 II - 输入有序数组
     func _167(_ numbers: [Int], _ target: Int) -> [Int] {
         var i = 0
