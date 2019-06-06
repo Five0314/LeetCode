@@ -276,6 +276,36 @@ extension LeetCode{
         return maxSUM
     }
     
+    /// 加一
+    func _66(_ digits: [Int]) -> [Int] {
+        var rv: [Int] = digits
+
+        var i: Int = digits.count - 1
+        var pv: Int = 1
+        
+        while true {
+            if pv <= 0{
+                break
+            }
+            
+            rv[i] += pv
+            if rv[i] < 10{
+                break
+            }
+            else{
+                rv[i] -= 10
+                pv = 1
+                i -= 1
+                if i < 0{
+                    i = 0
+                    rv.insert(0, at: 0)
+                }
+            }
+        }
+
+        return rv
+    }
+    
     /// 合并两个有序数组
     func _88(_ nums1: inout [Int], _ m: Int, _ nums2: [Int], _ n: Int){
         var i1 = m - 1
@@ -449,14 +479,14 @@ extension LeetCode{
         var min: Int = Int.max
         var maxProfit: Int = 0
         
-        var difference: Int = 0
+        var profit: Int = 0
         
         for item in prices{
-            difference = item - min
+            profit = item - min
             
-            if difference > 0{
-                if maxProfit < difference{
-                    maxProfit = difference
+            if profit > 0{
+                if maxProfit < profit{
+                    maxProfit = profit
                 }
             }
             
