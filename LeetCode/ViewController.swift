@@ -14,8 +14,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let nums: [Int] = [4, 3, 2, 1]
-        print(LeetCode.shared._66(nums))
+        let nums: [Int] = [9, 9]
+        print(LeetCode.shared._67("1111", "1111"))
     }
     
     func 排序(){

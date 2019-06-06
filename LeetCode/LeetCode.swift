@@ -268,13 +268,13 @@ extension LeetCode{
         return maxSUM
     }
     
-    /// 最大子序和 - 分治法
-    func _53_分治法(_ nums: [Int]) -> Int{
-        
-        var maxSUM: Int = nums[0]
-        
-        return maxSUM
-    }
+//    /// 最大子序和 - 分治法
+//    func _53_分治法(_ nums: [Int]) -> Int{
+//
+//        let maxSUM: Int = nums[0]
+//
+//        return maxSUM
+//    }
     
     /// 加一
     func _66(_ digits: [Int]) -> [Int] {
@@ -284,6 +284,11 @@ extension LeetCode{
         var pv: Int = 1
         
         while true {
+            if i < 0{ // 说明最大的那位需要进位了
+                rv.insert(pv, at: 0)
+                break
+            }
+            
             if pv <= 0{
                 break
             }
@@ -296,14 +301,53 @@ extension LeetCode{
                 rv[i] -= 10
                 pv = 1
                 i -= 1
-                if i < 0{
-                    i = 0
-                    rv.insert(0, at: 0)
-                }
             }
         }
 
         return rv
+    }
+    
+    /// 二进制求和
+    func _67(_ a: String, _ b: String) -> String {
+        
+        let maxC: Int = max(a.count, b.count)
+        let aOffset: Int = maxC - a.count
+        let bOffset: Int = maxC - b.count
+        
+        var rv: [Character] = [Character].init(repeating: Character.init("0"), count: maxC)
+        
+        var pv: Int = 0
+        
+        var av: Int = 0
+        var bv: Int = 0
+        
+        for i in (0..<maxC).reversed(){
+            av = self._67_get(valueAt: i - aOffset, a)
+            bv = self._67_get(valueAt: i - bOffset, b)
+            
+            pv += av + bv
+            if pv >= 2{
+                rv[i] = Character.init("\(pv - 2)")
+                pv = 1
+            }
+            else{
+                rv[i] = Character.init("\(pv)")
+                pv = 0
+            }
+        }
+        
+        if pv != 0{
+            rv.insert(Character.init("\(pv)"), at: 0)
+        }
+        
+        return String.init(rv)
+    }
+    fileprivate func _67_get(valueAt index: Int, _ str: String) -> Int{
+        if index >= 0{
+            return Int(str.substring(location: index, length: 1)) ?? 0
+        }
+
+        return 0
     }
     
     /// 合并两个有序数组
