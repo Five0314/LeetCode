@@ -350,6 +350,28 @@ extension LeetCode{
         return 0
     }
     
+    /// x 的平方根 - 牛顿迭代法
+    func _69(_ x: Int) -> Int {
+        var res = x
+        while res * res > x {
+            res = (res + x / res) / 2
+        }
+        return res
+    }
+//    func _69(_ x: Int) -> Float {
+//        let y: Float = Float(x)
+//        var res: Float = y
+//        while res * res > y { // 当心死循环哦 x = 12
+//            print(res)
+//            res = (res + y / res) / 2
+//        }
+//        return res
+//    }
+//    /// x 的平方根 - 二分法
+//    func _69_2(_ x: Int) -> Int {
+//        return x
+//    }
+    
     /// 合并两个有序数组
     func _88(_ nums1: inout [Int], _ m: Int, _ nums2: [Int], _ n: Int){
         var i1 = m - 1
