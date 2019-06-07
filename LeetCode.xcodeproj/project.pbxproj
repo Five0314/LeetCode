@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC15C1A522A381E90096A933 /* 检索.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC15C1A422A381E90096A933 /* 检索.swift */; };
+		BC15C1B122A3827C0096A933 /* 堆排序.gif in Resources */ = {isa = PBXBuildFile; fileRef = BC15C1A722A3827B0096A933 /* 堆排序.gif */; };
+		BC15C1B222A3827C0096A933 /* 插入排序.gif in Resources */ = {isa = PBXBuildFile; fileRef = BC15C1A822A3827B0096A933 /* 插入排序.gif */; };
+		BC15C1B322A3827C0096A933 /* 冒泡排序.gif in Resources */ = {isa = PBXBuildFile; fileRef = BC15C1A922A3827B0096A933 /* 冒泡排序.gif */; };
+		BC15C1B422A3827C0096A933 /* 基数排序.gif in Resources */ = {isa = PBXBuildFile; fileRef = BC15C1AA22A3827B0096A933 /* 基数排序.gif */; };
+		BC15C1B522A3827C0096A933 /* 计数排序.gif in Resources */ = {isa = PBXBuildFile; fileRef = BC15C1AB22A3827B0096A933 /* 计数排序.gif */; };
+		BC15C1B622A3827C0096A933 /* 希尔排序.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BC15C1AC22A3827B0096A933 /* 希尔排序.jpg */; };
+		BC15C1B722A3827C0096A933 /* 快速排序.gif in Resources */ = {isa = PBXBuildFile; fileRef = BC15C1AD22A3827B0096A933 /* 快速排序.gif */; };
+		BC15C1B822A3827C0096A933 /* 选择排序.gif in Resources */ = {isa = PBXBuildFile; fileRef = BC15C1AE22A3827B0096A933 /* 选择排序.gif */; };
+		BC15C1B922A3827C0096A933 /* 归并排序.gif in Resources */ = {isa = PBXBuildFile; fileRef = BC15C1AF22A3827B0096A933 /* 归并排序.gif */; };
+		BC15C1BA22A3827C0096A933 /* 桶排序.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BC15C1B022A3827B0096A933 /* 桶排序.jpg */; };
 		BC4E8B9F221E519100AE92DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4E8B9E221E519100AE92DE /* AppDelegate.swift */; };
 		BC4E8BA1221E519100AE92DE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4E8BA0221E519100AE92DE /* ViewController.swift */; };
 		BC4E8BA4221E519100AE92DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC4E8BA2221E519100AE92DE /* Main.storyboard */; };
@@ -28,6 +39,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BC15C1A422A381E90096A933 /* 检索.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "检索.swift"; sourceTree = "<group>"; };
+		BC15C1A722A3827B0096A933 /* 堆排序.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "堆排序.gif"; sourceTree = "<group>"; };
+		BC15C1A822A3827B0096A933 /* 插入排序.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "插入排序.gif"; sourceTree = "<group>"; };
+		BC15C1A922A3827B0096A933 /* 冒泡排序.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "冒泡排序.gif"; sourceTree = "<group>"; };
+		BC15C1AA22A3827B0096A933 /* 基数排序.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "基数排序.gif"; sourceTree = "<group>"; };
+		BC15C1AB22A3827B0096A933 /* 计数排序.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "计数排序.gif"; sourceTree = "<group>"; };
+		BC15C1AC22A3827B0096A933 /* 希尔排序.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "希尔排序.jpg"; sourceTree = "<group>"; };
+		BC15C1AD22A3827B0096A933 /* 快速排序.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "快速排序.gif"; sourceTree = "<group>"; };
+		BC15C1AE22A3827B0096A933 /* 选择排序.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "选择排序.gif"; sourceTree = "<group>"; };
+		BC15C1AF22A3827B0096A933 /* 归并排序.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "归并排序.gif"; sourceTree = "<group>"; };
+		BC15C1B022A3827B0096A933 /* 桶排序.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "桶排序.jpg"; sourceTree = "<group>"; };
 		BC4E8B9B221E519100AE92DE /* LeetCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LeetCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC4E8B9E221E519100AE92DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC4E8BA0221E519100AE92DE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +82,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BC15C1A622A3827B0096A933 /* 排序演示图 */ = {
+			isa = PBXGroup;
+			children = (
+				BC15C1A722A3827B0096A933 /* 堆排序.gif */,
+				BC15C1A822A3827B0096A933 /* 插入排序.gif */,
+				BC15C1A922A3827B0096A933 /* 冒泡排序.gif */,
+				BC15C1AA22A3827B0096A933 /* 基数排序.gif */,
+				BC15C1AB22A3827B0096A933 /* 计数排序.gif */,
+				BC15C1AC22A3827B0096A933 /* 希尔排序.jpg */,
+				BC15C1AD22A3827B0096A933 /* 快速排序.gif */,
+				BC15C1AE22A3827B0096A933 /* 选择排序.gif */,
+				BC15C1AF22A3827B0096A933 /* 归并排序.gif */,
+				BC15C1B022A3827B0096A933 /* 桶排序.jpg */,
+			);
+			path = "排序演示图";
+			sourceTree = "<group>";
+		};
 		BC4E8B92221E519100AE92DE = {
 			isa = PBXGroup;
 			children = (
@@ -84,7 +123,9 @@
 				BC4E8B9E221E519100AE92DE /* AppDelegate.swift */,
 				BC4E8BA0221E519100AE92DE /* ViewController.swift */,
 				BCFBD6992261D782006AF86B /* 排序.swift */,
+				BC15C1A622A3827B0096A933 /* 排序演示图 */,
 				BC516C05226A8C17006E1745 /* LeetCode.swift */,
+				BC15C1A422A381E90096A933 /* 检索.swift */,
 				BC4E8BA2221E519100AE92DE /* Main.storyboard */,
 				BC4E8BA5221E519300AE92DE /* Assets.xcassets */,
 				BC4E8BA7221E519300AE92DE /* LaunchScreen.storyboard */,
@@ -183,8 +224,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC15C1B422A3827C0096A933 /* 基数排序.gif in Resources */,
+				BC15C1BA22A3827C0096A933 /* 桶排序.jpg in Resources */,
 				BC4E8BA9221E519300AE92DE /* LaunchScreen.storyboard in Resources */,
 				BC4E8BA6221E519300AE92DE /* Assets.xcassets in Resources */,
+				BC15C1B322A3827C0096A933 /* 冒泡排序.gif in Resources */,
+				BC15C1B622A3827C0096A933 /* 希尔排序.jpg in Resources */,
+				BC15C1B122A3827C0096A933 /* 堆排序.gif in Resources */,
+				BC15C1B822A3827C0096A933 /* 选择排序.gif in Resources */,
+				BC15C1B222A3827C0096A933 /* 插入排序.gif in Resources */,
+				BC15C1B722A3827C0096A933 /* 快速排序.gif in Resources */,
+				BC15C1B922A3827C0096A933 /* 归并排序.gif in Resources */,
+				BC15C1B522A3827C0096A933 /* 计数排序.gif in Resources */,
 				BC4E8BA4221E519100AE92DE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -205,6 +256,7 @@
 			files = (
 				BCFBD69A2261D782006AF86B /* 排序.swift in Sources */,
 				BC4E8BA1221E519100AE92DE /* ViewController.swift in Sources */,
+				BC15C1A522A381E90096A933 /* 检索.swift in Sources */,
 				BC516C06226A8C17006E1745 /* LeetCode.swift in Sources */,
 				BC4E8B9F221E519100AE92DE /* AppDelegate.swift in Sources */,
 			);

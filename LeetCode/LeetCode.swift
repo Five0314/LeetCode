@@ -238,8 +238,6 @@ extension LeedCode{
         }
     }
     
-    
-    
     /// 罗马数字转整数
     func _58(_ s: String) -> Int {
         let items = s.components(separatedBy: " ")
@@ -493,7 +491,22 @@ extension LeedCode{
         }
     }
     
-    
+    /// 搜索二维矩阵 - 二分查找
+    func _74(_ matrix: [[Int]], _ target: Int) -> Int?{
+        guard let fv: Int = matrix.first?.first,
+            let lv: Int = matrix.last?.last,
+            fv <= target && target <= lv else {
+                return nil
+        }
+        
+        let columnCount: Int = matrix.count
+        
+        
+        
+//        let tc: Int = matrix.count * matrix[0].count
+        
+        return nil
+    }
 }
 
 //MARK: 困难
@@ -642,6 +655,38 @@ extension LeedCode{
         }
         
         return String(s.suffix(from: s.index(s.startIndex, offsetBy: j + 1)).reversed()) + s
+    }
+    
+    /// 鸡蛋掉落
+    func _887(_ K: Int, _ N: Int) -> Int {
+        
+        let F: Int = 9
+        
+        var l: Int = 0
+        var h: Int = N
+        var m: Int = 0
+        
+        var k: Int = K
+        while k > 1{
+            m = (l + h) / 2
+            
+            if m > 9{
+                h = m
+            }
+            else{
+                l = m
+            }
+            
+            k -= 1
+        }
+        
+        for i in 1...h{
+            if i == F{
+                return i
+            }
+        }
+        
+        return 0
     }
 }
 
