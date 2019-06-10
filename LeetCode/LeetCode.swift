@@ -8,17 +8,6 @@
 
 import UIKit
 
-//func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-//    switch (lhs, rhs) {
-//    case let (l?, r?):
-//        return l < r
-//    case (nil, _?):
-//        return true
-//    default:
-//        return false
-//    }
-//}
-
 class LeetCode{
     static var shared = LeetCode.init()
 }
@@ -872,54 +861,82 @@ extension LeetCode{
 extension LeetCode{
     
     /// 寻找两个有序数组的中位数
-    func _4(_ arr1: [Int], _ arr2: [Int]) -> Double{
-        let c1 = arr1.count
-        let c2 = arr2.count
+    func _4(_ nums1: [Int], _ nums2: [Int]) -> Double{
+        let c1 = nums1.count
+        let c2 = nums2.count
         
-        let mi = c1 + c2
-        let isDoubleCount = mi % 2 == 0
+        var lv: Int?
         
-        let mi2 = mi / 2
-        let mi1 = isDoubleCount ? mi2 - 1 : mi2
+        let midx: Int = (c1 + c2)/2
+        var idx1: Int = 0
+        var idx2: Int = 0
+        var v1: Int?
+        var v2: Int?
         
-        // h奇数
-        var i1 = 0
-        var i2 = 0
-        
-        var v1 = arr1[0]
-        var v2 = arr2[0]
-        
-        while true{
-            if isDoubleCount{
-                if v1 == mi1 && v2 == mi2{
-                    return Double(arr1[v1] + arr2[v2]) / 2
+        for i in 0...midx {
+            v1 = self._4_get(nums1, idx: idx1, maxCount: c1)
+            v2 = self._4_get(nums2, idx: idx2, maxCount: c2)
+            
+            if i == midx{
+                // 奇总数
+                if (c1 + c2) & 1 == 1{
+                    if let v1 = v1, let v2 = v2{
+                        return Double(v1 < v2 ? v1 : v2)
+                    }
+                    else if let v1 = v1{
+                        return Double(v1)
+                    }
+                    else if let v2 = v2{
+                        return Double(v2)
+                    }
                 }
-            }
-            else{
-                if v1 == mi1{
-                    return Double(arr1[v1])
-                }
-                
-                if v2 == mi2{
-                    return Double(arr2[v2])
+                else{ // 偶总数
+                    var rv: Double = Double(lv ?? 0)
+                    
+                    if let v1 = v1, let v2 = v2{
+                        rv += Double(v1 < v2 ? v1 : v2)
+                    }
+                    else if let v1 = v1{
+                        rv += Double(v1)
+                    }
+                    else if let v2 = v2{
+                        rv += Double(v2)
+                    }
+                    return rv * 0.5
                 }
             }
             
-            if v1 < v2{
-                i1 += 1
-                
-                if i1 < c1{
-                    v1 = arr1[i1]
+            if let v1 = v1, let v2 = v2{
+                if v1 < v2{
+                    lv = v1
+                    idx1 += 1
+                }
+                else{
+                    lv = v2
+                    idx2 += 1
                 }
             }
             else{
-                i2 += 1
-                
-                if i2 < c2{
-                    v2 = arr2[i2]
+                if v1 != nil{
+                    lv = v1
+                    idx1 += 1
+                }
+                else if v2 != nil{
+                    lv = v2
+                    idx2 += 1
                 }
             }
         }
+        
+        return 0
+    }
+    
+    fileprivate func _4_get(_ nums: [Int], idx: Int, maxCount: Int) -> Int?{
+        guard idx < maxCount else{
+            return nil
+        }
+        
+        return nums[idx]
     }
     
     // KMP算法的核心，是一个被称为部分匹配表(Partial Match Table)的数组。
