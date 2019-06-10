@@ -8,32 +8,13 @@
 
 import UIKit
 
-//func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-//    switch (lhs, rhs) {
-//    case let (l?, r?):
-//        return l < r
-//    case (nil, _?):
-//        return true
-//    default:
-//        return false
-//    }
-//}
-
-class LeetCode{
-    static var shared = LeetCode.init()
-}
-
-extension String{
-    func substring(location: Int, length: Int) -> String{
-        let si = self.index(self.startIndex, offsetBy: location)
-        let ei = self.index(si, offsetBy: length)
-        return String(self[si..<ei])
-    }
+class LeedCode{
+    static var shared = LeedCode.init()
 }
 
 
 //MARK: 简单
-extension LeetCode{
+extension LeedCode{
     /// 两数之和
     func _1(_ nums: [Int], _ target: Int) -> [Int] {
         let s = Set(nums)
@@ -109,43 +90,6 @@ extension LeetCode{
         return rv
     }
     
-    /// 最长公共前缀
-    func _14(_ arr: [String]) -> String{
-        if arr.isEmpty{
-            return ""
-        }
-        
-        let ss = arr[0]
-        
-        for i in 0..<ss.count{
-            let cs = ss.substring(location: i, length: 1)
-            
-            for item in arr{
-                if item.count > i{
-                    let c = item.substring(location: i, length: 1)
-                    if c != cs{
-                        return String(ss.prefix(i))
-                    }
-                }
-                else{
-                    return String(ss.prefix(i))
-                }
-            }
-        }
-        
-        return ss
-    }
-    
-    func _14_2(_ arr: [String], commonPrefix: String) -> Bool{
-        for item in arr{
-            if !item.hasPrefix(commonPrefix){
-                return false
-            }
-        }
-        
-        return true
-    }
-    
     public class ListNode_21 {
         public var val: Int
         public var next: ListNode_21?
@@ -191,238 +135,6 @@ extension LeetCode{
         }
         
         return rv
-    }
-    
-    /// 搜索插入位置 - 二分查找
-    func _35(_ nums: [Int], _ target: Int) -> Int {
-//        return self._35_递归(nums, target, left: 0, right: nums.count - 1)
-        
-        var l: Int = 0
-        var r: Int = nums.count - 1
-        var m: Int = 0
-
-        while l < r{
-            m = (l + r) / 2
-
-            if nums[m] < target{ // 后半段
-                l = m + 1
-            }
-            else if nums[m] > target{ // 前半段
-                r = m
-            }
-            else{
-                return m
-            }
-        }
-
-        if nums[r] == target{
-            return r
-        }
-        else if nums[r] > target{
-            return r
-        }
-        else{
-            return r + 1
-        }
-    }
-    
-//    func _35_递归(_ nums: [Int], _ target: Int, left: Int, right: Int) -> Int {
-//        if right - 1 < left{
-//            if nums[right] <= target{
-//                return right + 1
-//            }
-//
-//            if nums[left] >= target{
-//                return left
-//            }
-//
-//            return right
-//        }
-//
-//        let mi: Int = (left + right) / 2
-//
-//        if nums[mi] < target{ // 后半段
-//            return self._35_递归(nums, target, left: mi, right: right)
-//        }
-//        else if nums[mi] > target{ // 前半段
-//            return self._35_递归(nums, target, left: left, right: mi)
-//        }
-//        else{
-//            return mi
-//        }
-//    }
-    
-    /// 最大子序和 - 计算每个节点为结尾时的最大值 - 动态规划
-    func _53(_ nums: [Int]) -> Int{
-        
-        var maxSUM: Int = nums[0]
-        var currentSUM: Int = nums[0]
-        
-        for i in 1..<nums.count{
-            currentSUM = max(nums[i], currentSUM + nums[i])
-            
-            if maxSUM < currentSUM{
-                maxSUM = currentSUM
-            }
-        }
-        return maxSUM
-    }
-    
-//    /// 最大子序和 - 分治法
-//    func _53_分治法(_ nums: [Int]) -> Int{
-//
-//        let maxSUM: Int = nums[0]
-//
-//        return maxSUM
-//    }
-    
-    /// 加一
-    func _66(_ digits: [Int]) -> [Int] {
-        var rv: [Int] = digits
-
-        var i: Int = digits.count - 1
-        var pv: Int = 1
-        
-        while true {
-            if i < 0{ // 说明最大的那位需要进位了
-                rv.insert(pv, at: 0)
-                break
-            }
-            
-            if pv <= 0{
-                break
-            }
-            
-            rv[i] += pv
-            if rv[i] < 10{
-                break
-            }
-            else{
-                rv[i] -= 10
-                pv = 1
-                i -= 1
-            }
-        }
-
-        return rv
-    }
-    
-    /// 二进制求和
-    func _67(_ a: String, _ b: String) -> String {
-        
-        let maxC: Int = max(a.count, b.count)
-        let aOffset: Int = maxC - a.count
-        let bOffset: Int = maxC - b.count
-        
-        var rv: [Character] = [Character].init(repeating: Character.init("0"), count: maxC)
-        
-        var pv: Int = 0
-        
-        var av: Int = 0
-        var bv: Int = 0
-        
-        for i in (0..<maxC).reversed(){
-            av = self._67_get(valueAt: i - aOffset, a)
-            bv = self._67_get(valueAt: i - bOffset, b)
-            
-            pv += av + bv
-            if pv >= 2{
-                rv[i] = Character.init("\(pv - 2)")
-                pv = 1
-            }
-            else{
-                rv[i] = Character.init("\(pv)")
-                pv = 0
-            }
-        }
-        
-        if pv != 0{
-            rv.insert(Character.init("\(pv)"), at: 0)
-        }
-        
-        return String.init(rv)
-    }
-    fileprivate func _67_get(valueAt index: Int, _ str: String) -> Int{
-        if index >= 0{
-            return Int(str.substring(location: index, length: 1)) ?? 0
-        }
-
-        return 0
-    }
-    
-    /// x 的平方根 - 牛顿迭代法
-    func _69(_ x: Int) -> Int {
-        var res = x
-        while res * res > x {
-            res = (res + x / res) / 2
-        }
-        return res
-    }
-//    func _69(_ x: Int) -> Float {
-//        let y: Float = Float(x)
-//        var res: Float = y
-//        while res * res > y { // 当心死循环哦 x = 12
-//            print(res)
-//            res = (res + y / res) / 2
-//        }
-//        return res
-//    }
-//    /// x 的平方根 - 二分法
-//    func _69_2(_ x: Int) -> Int {
-//        return x
-//    }
-    
-    /// 合并两个有序数组
-    func _88(_ nums1: inout [Int], _ m: Int, _ nums2: [Int], _ n: Int){
-        var i1 = m - 1
-        var i2 = n - 1
-        var k = m + n - 1
-
-        while i1 >= 0 && i2 >= 0 {
-            if nums1[i1] > nums2[i2] {
-                nums1[k] = nums1[i1]
-                k -= 1
-                i1 -= 1
-            } else {
-                nums1[k] = nums2[i2]
-                k -= 1
-                i2 -= 1
-            }
-        }
-
-        if i2 >= 0 { // 如果 i1 >= 0，说明nums2 的内容已经用完了，说明大的都搞定了，就剩下 nums1 中的小的了，由由于nums1中的数据已经排序好了，就没必要再排序了
-            for t in 0...i2 {
-                nums1[t] = nums2[t]
-            }
-        }
-    }
-    
-    /// 合并两个有序数组 - 相比较上面的一个，部分情况下会多遍历几次，没有有效的利用nums1中的数据已经是有序的这一条件
-    func _88_2(_ nums1: inout [Int], _ m: Int, _ nums2: [Int], _ n: Int){
-        var k = m + n - 1
-        
-        var i2 = n - 1
-        for i in stride(from: m - 1, through: 0, by: -1){
-            while i2 >= 0{
-                if nums2[i2] > nums1[i]{
-                    nums1[k] = nums2[i2]
-                    i2 -= 1
-                    k -= 1
-                }
-                else{
-                    break
-                }
-            }
-            
-            nums1[k] = nums1[i]
-            k -= 1
-        }
-        
-        if i2 >= 0{
-            for i in 0...i2{
-                nums1[i] = nums2[i]
-            }
-        }
     }
     
     /// 验证回文串
@@ -502,7 +214,7 @@ extension LeetCode{
                 }
             }
         }
-        
+
         return true
     }
     
@@ -537,71 +249,6 @@ extension LeetCode{
         }
         
         return 0
-    }
-    
-    /// 买卖股票的最佳时机
-    func _121(_ prices: [Int]) -> Int{
-        
-        var min: Int = Int.max
-        var maxProfit: Int = 0
-        
-        var profit: Int = 0
-        
-        for item in prices{
-            profit = item - min
-            
-            if profit > 0{
-                if maxProfit < profit{
-                    maxProfit = profit
-                }
-            }
-            
-            if min > item{
-                min = item
-            }
-        }
-        
-        return maxProfit
-    }
-    
-    /// 买卖股票的最佳时机II
-    func _122(_ prices: [Int]) -> Int{
-        
-        let c = prices.count - 1
-        if c < 1{
-            return 0
-        }
-
-        var profit: Int = 0
-        
-        var buy: Int = -1
-        
-        var next: Int = 0
-        
-        for i in 0..<c{
-            
-            next = prices[i + 1]
-            
-            if buy == -1{ // 还没买过，只要明天的比今天的高，说明今天买了就会有收益
-                if prices[i] < next{
-                    buy = prices[i]
-                }
-            }
-            else{ // 既然买过了，就开始研究啥时候卖了 - 只要明天的比今天的低，就可以卖，明天比今天的高就等到明天再卖吗
-                if prices[i] > next{
-                    profit += prices[i] - buy
-                    buy = -1
-                }
-            }
-        }
-        
-        if buy != -1{ // 还有没卖掉了，和最后一天的价格进行比较
-            if buy < prices[c]{
-                profit += prices[c] - buy
-            }
-        }
-        
-        return profit
     }
     
     /// 两数之和 II - 输入有序数组
@@ -649,30 +296,6 @@ extension LeetCode{
         return rv
     }
     
-    /// 第一个错误的版本
-    func _278(_ n: Int) -> Int {
-        var l: Int = 1
-        var r: Int = n
-        var m: Int = 0
-        
-        while l < r{
-            m = (l + r) / 2
-            
-            if self.isBadVersion(m){
-                r = m
-            }
-            else{
-                l = m + 1
-            }
-        }
-        
-        return l
-    }
-    
-    fileprivate func isBadVersion(_ i: Int) -> Bool{
-        return i >= 3
-    }
-    
     /// 两数之和 II - 输入有序数组
     func _653(_ root: TreeNode?, _ k: Int) -> Bool {
         var s: Set<Int> = []
@@ -704,6 +327,7 @@ extension LeetCode{
         }
     }
     
+    
     /// 重复 N 次的元素
     func _961(_ A: [Int]) -> Int {
         
@@ -723,7 +347,7 @@ extension LeetCode{
 }
 
 //MARK: 中等
-extension LeetCode{
+extension LeedCode{
     /// 两数相加
     func _2(_ l1: ListNode?, _ l2: ListNode?) -> ListNode? {
         var rootNode: ListNode?
@@ -799,7 +423,7 @@ extension LeetCode{
         return maxLength
     }
     
-    /// 整数转罗马数字
+    /// 整数反转
     func _12(_ num: Int) -> String {
         let values = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
         
@@ -866,10 +490,27 @@ extension LeetCode{
             return ""
         }
     }
+    
+    /// 搜索二维矩阵 - 二分查找
+    func _74(_ matrix: [[Int]], _ target: Int) -> Int?{
+        guard let fv: Int = matrix.first?.first,
+            let lv: Int = matrix.last?.last,
+            fv <= target && target <= lv else {
+                return nil
+        }
+        
+        let columnCount: Int = matrix.count
+        
+        
+        
+//        let tc: Int = matrix.count * matrix[0].count
+        
+        return nil
+    }
 }
 
 //MARK: 困难
-extension LeetCode{
+extension LeedCode{
     
     /// 寻找两个有序数组的中位数
     func _4(_ arr1: [Int], _ arr2: [Int]) -> Double{
@@ -922,16 +563,16 @@ extension LeetCode{
         }
     }
     
-    // KMP算法的核心，是一个被称为部分匹配表(Partial Match Table)的数组。
+// KMP算法的核心，是一个被称为部分匹配表(Partial Match Table)的数组。
     
     /// 最短回文串 - PMT中的值是字符串的前缀集合与后缀集合的交集中最长元素的长度
     func _214(_ s: String) -> String {
         
-        //        let p: [Character] = s.filter { (item) -> Bool in
-        //            return true
-        //        }
-        //        let v = self._214_递归(p)
-        //        return String(v)
+//        let p: [Character] = s.filter { (item) -> Bool in
+//            return true
+//        }
+//        let v = self._214_递归(p)
+//        return String(v)
         return self._214_KMP(s)
     }
     
@@ -972,9 +613,7 @@ extension LeetCode{
                 k = next[k]
             }
         }
-        
-        return String(r[r.startIndex ..< String.Index.init(utf16Offset: r.endIndex.utf16Offset(in: r) - next[pCount], in: r)]) + s
-        //        return String(r[r.startIndex ..< String.Index(encodedOffset: r.endIndex.encodedOffset - next[pCount])]) + s
+        return String(r[r.startIndex ..< String.Index(encodedOffset: r.endIndex.encodedOffset - next[pCount])]) + s
     }
     
     func _214_对称轴寻找回文串(_ s: String) -> String {
@@ -1017,9 +656,41 @@ extension LeetCode{
         
         return String(s.suffix(from: s.index(s.startIndex, offsetBy: j + 1)).reversed()) + s
     }
+    
+    /// 鸡蛋掉落
+    func _887(_ K: Int, _ N: Int) -> Int {
+        
+        let F: Int = 9
+        
+        var l: Int = 0
+        var h: Int = N
+        var m: Int = 0
+        
+        var k: Int = K
+        while k > 1{
+            m = (l + h) / 2
+            
+            if m > 9{
+                h = m
+            }
+            else{
+                l = m
+            }
+            
+            k -= 1
+        }
+        
+        for i in 1...h{
+            if i == F{
+                return i
+            }
+        }
+        
+        return 0
+    }
 }
 
 //MARK: 回文
-extension LeetCode{
+extension LeedCode{
     /// _9
 }
