@@ -856,6 +856,48 @@ extension LeetCode{
         }
     }
     
+    /// 不同路径
+    func _62(_ m: Int, _ n: Int) -> Int {
+        var paths = [[Int]].init(repeating: [Int].init(repeating: 1, count: n), count: m) // 记录到当前节点的路径数量
+        
+        var left: Int?
+        var upper: Int?
+        
+        for column in 1..<n{
+            for row in 1..<m{
+                // 左
+                if row == 0{
+                    left = nil
+                }
+                else{
+                    left = paths[row - 1][column]
+                }
+                
+                // 上
+                if column == 0{
+                    upper = nil
+                }
+                else{
+                    upper = paths[row][column - 1]
+                }
+                
+                if left != nil, upper != nil{
+                    paths[row][column] = left! + upper!
+                }
+                else{
+                    if left != nil{
+                        paths[row][column] = left!
+                    }
+                    else if upper != nil{
+                        paths[row][column] = upper!
+                    }
+                }
+            }
+        }
+        
+        return paths[m - 1][n - 1]
+    }
+    
     /// 最小路径和
     func _64(_ grid: [[Int]]) -> Int {
         let rows = grid.count

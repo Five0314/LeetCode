@@ -20,7 +20,7 @@ class ViewController: UIViewController {
             [4,2,1]
         ]
         
-        print(LeetCode.shared._64(nums1))
+        print(LeetCode.shared._62(7, 3))
     }
     
     func 排序(){
