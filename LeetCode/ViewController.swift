@@ -10,48 +10,18 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.回文()
-//        self._4()
-        
-//        self.findNum([1])
-        
-        
-        
-        
-        print(LeedCode.shared._169([1, 2, 2, 3, 2]))
-    }
-    
-    func _4(){
-        let arr1 = [1, 2]
-        let arr2 = [3, 4]
-        
-        print(LeedCode.shared._4(arr1, arr2))
-    }
-    
-    func 回文(){
-
-//        DispatchQueue.global().async {
-//            let a = ["", "a", "aa", "ba", "aaa", "aaaa", "aaaaa", "adcba", "ababbbabbaba", "babbbabbaba", "aaaabbaa"]
-//            let b = ["", "a", "aa", "aba", "aaa", "aaaa", "aaaaa", "abcdadcba", "ababbabbbababbbabbaba", "ababbabbbabbaba", "aabbaaaabbaa"]
-//
-//            let t2 = Date().timeIntervalSince1970
-//            for (i, item) in a.enumerated(){
-//                let v = LeedCode.shared._214(item)
-//                //                print("KMP \(v == b[i]) : \(v)   \(b[i])")
-//            }
-//
-//            print(" ----- KMP \(Date().timeIntervalSince1970 - t2) ")
-//        }
+        let nums: [Int] = [9, 9]
+        print(LeetCode.shared._69(8))
     }
     
     func 排序(){
         var a = [23, 12, 34, 2, 67, 5, 43, 123, 432, 32, 44, 1, 31, 24, 21, 26, 13, 15, 16, 7, 8]
         print(Date().timeIntervalSince1970)
-        CNSSort.希尔排序(&a)
+        CNSSort.shared.希尔排序(&a)
         //        CNSSort.插入排序(&a)
         print(Date().timeIntervalSince1970)
         print(a)
