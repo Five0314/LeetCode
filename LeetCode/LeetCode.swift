@@ -855,6 +855,51 @@ extension LeetCode{
             return ""
         }
     }
+    
+    /// 最小路径和
+    func _64(_ grid: [[Int]]) -> Int {
+        let rows = grid.count
+        let columns = grid[0].count
+        
+        var paths = grid // 记录到当前节点的最短路径
+        
+        var left: Int?
+        var upper: Int?
+        
+        for column in 0..<columns{
+            for row in 0..<rows{
+                // 左
+                if row == 0{
+                    left = nil
+                }
+                else{
+                    left = paths[row - 1][column]
+                }
+                
+                // 上
+                if column == 0{
+                    upper = nil
+                }
+                else{
+                    upper = paths[row][column - 1]
+                }
+                
+                if left != nil, upper != nil{
+                    paths[row][column] = min(left!, upper!) + grid[row][column]
+                }
+                else{
+                    if left != nil{
+                        paths[row][column] = left! + grid[row][column]
+                    }
+                    else if upper != nil{
+                        paths[row][column] = upper! + grid[row][column]
+                    }
+                }
+            }
+        }
+        
+        return paths[rows - 1][columns - 1]
+    }
 }
 
 //MARK: 困难
@@ -867,44 +912,14 @@ extension LeetCode{
         
         var lv: Int?
         
-        let midx: Int = (c1 + c2)/2
         var idx1: Int = 0
         var idx2: Int = 0
         var v1: Int?
         var v2: Int?
         
-        for i in 0...midx {
+        for _ in 0..<((c1 + c2) / 2) {
             v1 = self._4_get(nums1, idx: idx1, maxCount: c1)
             v2 = self._4_get(nums2, idx: idx2, maxCount: c2)
-            
-            if i == midx{
-                // 奇总数
-                if (c1 + c2) & 1 == 1{
-                    if let v1 = v1, let v2 = v2{
-                        return Double(v1 < v2 ? v1 : v2)
-                    }
-                    else if let v1 = v1{
-                        return Double(v1)
-                    }
-                    else if let v2 = v2{
-                        return Double(v2)
-                    }
-                }
-                else{ // 偶总数
-                    var rv: Double = Double(lv ?? 0)
-                    
-                    if let v1 = v1, let v2 = v2{
-                        rv += Double(v1 < v2 ? v1 : v2)
-                    }
-                    else if let v1 = v1{
-                        rv += Double(v1)
-                    }
-                    else if let v2 = v2{
-                        rv += Double(v2)
-                    }
-                    return rv * 0.5
-                }
-            }
             
             if let v1 = v1, let v2 = v2{
                 if v1 < v2{
@@ -926,6 +941,36 @@ extension LeetCode{
                     idx2 += 1
                 }
             }
+        }
+        
+        ///
+        v1 = self._4_get(nums1, idx: idx1, maxCount: c1)
+        v2 = self._4_get(nums2, idx: idx2, maxCount: c2)
+        // 奇总数
+        if (c1 + c2) & 1 == 1{
+            if let v1 = v1, let v2 = v2{
+                return Double(v1 < v2 ? v1 : v2)
+            }
+            else if let v1 = v1{
+                return Double(v1)
+            }
+            else if let v2 = v2{
+                return Double(v2)
+            }
+        }
+        else{ // 偶总数
+            var rv: Double = Double(lv ?? 0)
+            
+            if let v1 = v1, let v2 = v2{
+                rv += Double(v1 < v2 ? v1 : v2)
+            }
+            else if let v1 = v1{
+                rv += Double(v1)
+            }
+            else if let v2 = v2{
+                rv += Double(v2)
+            }
+            return rv * 0.5
         }
         
         return 0
