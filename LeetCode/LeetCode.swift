@@ -662,6 +662,25 @@ extension LeetCode{
         return i >= 3
     }
     
+    /// 有效的完全平方数
+    func _367(_ num: Int) -> Bool {
+        var tv: Int = 0
+
+        for i in 1...num{
+            tv += 2 * i - 1
+
+            if tv > num{
+                return false
+            }
+
+            if tv == num{
+                return true
+            }
+        }
+
+        return false
+    }
+    
     /// 两数之和 II - 输入有序数组
     func _653(_ root: TreeNode?, _ k: Int) -> Bool {
         var s: Set<Int> = []
@@ -856,7 +875,7 @@ extension LeetCode{
         }
     }
     
-    /// 不同路径
+    /// 不同路径 - 63的算法也可适用于此题
     func _62(_ m: Int, _ n: Int) -> Int {
         var paths = [[Int]].init(repeating: [Int].init(repeating: 1, count: n), count: m) // 记录到当前节点的路径数量
         
@@ -896,6 +915,36 @@ extension LeetCode{
         }
         
         return paths[m - 1][n - 1]
+    }
+    
+    /// 不同路径 II
+    func _63(_ obstacleGrid: [[Int]]) -> Int {
+        if obstacleGrid.isEmpty {
+            return 0
+        }
+        
+        let n = obstacleGrid.count
+        let m = obstacleGrid[0].count
+        
+        var dp = Array<Int>(repeating: 0, count: m)
+        dp[0] = obstacleGrid[0][0] == 1 ? 0 : 1
+        
+        for i in 0...n-1 {
+            
+            for j in 0...m-1 {
+                
+                if obstacleGrid[i][j] == 1 {
+                    dp[j] = 0
+                } else {
+                    if j == 0 {
+                        continue
+                    } else {
+                        dp[j] = dp[j-1] + dp[j]
+                    }
+                }
+            }
+        }
+        return dp[m-1]
     }
     
     /// 最小路径和
