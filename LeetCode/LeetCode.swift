@@ -265,6 +265,19 @@ extension LeetCode{
 //        return maxSUM
 //    }
     
+    /// 罗马数字转整数
+    func _58(_ s: String) -> Int {
+        let items = s.components(separatedBy: " ")
+        
+        for i in items.reversed(){
+            if !i.isEmpty{
+                return i.count
+            }
+        }
+        
+        return 0
+    }
+    
     /// 加一
     func _66(_ digits: [Int]) -> [Int] {
         var rv: [Int] = digits
@@ -515,19 +528,6 @@ extension LeetCode{
         }
     }
     
-    /// 罗马数字转整数
-    func _58(_ s: String) -> Int {
-        let items = s.components(separatedBy: " ")
-        
-        for i in items.reversed(){
-            if !i.isEmpty{
-                return i.count
-            }
-        }
-        
-        return 0
-    }
-    
     /// 买卖股票的最佳时机
     func _121(_ prices: [Int]) -> Int{
         
@@ -698,6 +698,32 @@ extension LeetCode{
             }
         }
         
+        
+        return false
+    }
+    
+    /// 平方数之和
+    func _633(_ c: Int) -> Bool {
+        var l: Int = 0
+        var r: Int = _69(c) // 开方
+//        var r: Int = Int(sqrt(Double(c)))
+        
+        var tv: Int = 0
+        
+        while l <= r{
+            tv = l * l + r * r
+            
+            if tv == c{
+                return true
+            }
+            
+            if tv < c{
+                l += 1
+            }
+            else{
+                r -= 1
+            }
+        }
         
         return false
     }
