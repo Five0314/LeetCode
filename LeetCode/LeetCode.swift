@@ -1217,6 +1217,34 @@ extension LeetCode{
         
         return String(s.suffix(from: s.index(s.startIndex, offsetBy: j + 1)).reversed()) + s
     }
+    
+    /// 计算各个位数不同的数字个数
+    func _357(_ n: Int) -> Int {
+        
+        if n == 0{
+            return 1
+        }
+        
+        if n == 1{
+            return 10
+        }
+        
+        var rv: Int = 0
+        
+        var cv: Int = 9
+        
+        for i in 2...n{
+            cv = 9
+            
+            for j in 2...i{
+                cv *= 11 - j
+            }
+            
+            rv += cv
+        }
+        
+        return rv + 10
+    }
 }
 
 //MARK: 回文
