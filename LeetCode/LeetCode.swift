@@ -638,6 +638,26 @@ extension LeetCode{
         return rv
     }
     
+    /// 231. 2的幂
+    func _231(_ n: Int) -> Bool{
+        
+        var hasOne: Bool = false
+        
+        var nn: Int = n
+        while nn > 0{
+            if nn & 1 == 1{
+                if hasOne{
+                    return false
+                }
+                hasOne = true
+            }
+            
+            nn >>= 1
+        }
+        
+        return hasOne
+    }
+    
     /// 第一个错误的版本
     func _278(_ n: Int) -> Int {
         var l: Int = 1
