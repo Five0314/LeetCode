@@ -19,7 +19,7 @@ class ViewController: UIViewController {
 //        print(LeetCode.shared._63(nums1))
 //        print(LeetCode.shared._62(3, 3))
         
-        print(LeetCode.shared._367(14))
+        print(LeetCode.shared._367_2(4))
     }
     
     func 排序(){

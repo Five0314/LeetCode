@@ -662,22 +662,43 @@ extension LeetCode{
         return i >= 3
     }
     
-    /// 有效的完全平方数
+    /// 有效的完全平方数 - 利用 1+3+5+7+9+…+(2n-1)=n^2，即完全平方数肯定是前n个连续奇数的和
     func _367(_ num: Int) -> Bool {
-        var tv: Int = 0
-
-        for i in 1...num{
-            tv += 2 * i - 1
-
-            if tv > num{
-                return false
-            }
-
-            if tv == num{
-                return true
-            }
+        var v: Int = num
+        var cv: Int = 1
+        
+        while v > 0{
+            v -= cv
+            cv += 2
         }
 
+        return v == 0
+    }
+    
+    /// 有效的完全平方数 - 二分法
+    func _367_2(_ num: Int) -> Bool {
+        var l: Int = 1
+        var r: Int = num
+        var m: Int = 0
+        var sv: Int = 0
+        
+        while l < r{
+            m = (l + r) / 2
+            sv = m * m
+            
+            if sv == num{
+                return true
+            }
+            
+            if sv < num{
+                l = m + 1
+            }
+            else{
+                r = m
+            }
+        }
+        
+        
         return false
     }
     
