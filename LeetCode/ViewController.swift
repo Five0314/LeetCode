@@ -14,6 +14,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        // 两数交换
+//        var a = 8
+//        var b = 999
+//        
+//        a = a ^ b
+//        b = a ^ b
+//        a = a ^ b
+//        
+//        print("\(a)   \(b)")
+        
         let nums1: [Int] = [10, 15, 20]
 
         print(LeetCode.shared._746(nums1))

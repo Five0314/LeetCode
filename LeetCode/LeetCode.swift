@@ -618,6 +618,18 @@ extension LeetCode{
         return profit
     }
     
+    /// 只出现一次的数字
+    func _136(_ nums: [Int]) -> Int {
+        
+        var rv: Int = 0
+        
+        for item in nums{
+            rv ^= item
+        }
+        
+        return rv
+    }
+    
     /// 两数之和 II - 输入有序数组
     func _167(_ numbers: [Int], _ target: Int) -> [Int] {
         var i = 0
