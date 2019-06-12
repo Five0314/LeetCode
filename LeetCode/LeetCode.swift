@@ -374,6 +374,31 @@ extension LeetCode{
 //        return x
 //    }
     
+    /// 爬楼梯
+    func _70(_ n: Int) -> Int {
+        if n <= 1{
+            return 1
+        }
+        
+        if n == 2{
+            return 2
+        }
+        
+        var vi: Int = 0
+        
+        var v1: Int = 1
+        var v2: Int = 2
+        
+        for _ in 3...n{
+            vi = v1 + v2
+            
+            v1 = v2
+            v2 = vi
+        }
+        
+        return vi
+    }
+    
     /// 合并两个有序数组
     func _88(_ nums1: inout [Int], _ m: Int, _ nums2: [Int], _ n: Int){
         var i1 = m - 1

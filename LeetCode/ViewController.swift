@@ -16,7 +16,7 @@ class ViewController: UIViewController {
         
 //        let nums1: [[Int]] = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
 
-        print(LeetCode.shared._231(218))
+        print(LeetCode.shared._70(3))
     }
     
     func 排序(){
