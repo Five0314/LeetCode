@@ -374,7 +374,7 @@ extension LeetCode{
 //        return x
 //    }
     
-    /// 爬楼梯
+    /// 爬楼梯 f(n) = f(n - 1) + f(n - 2)
     func _70(_ n: Int) -> Int {
         if n <= 1{
             return 1
@@ -747,6 +747,31 @@ extension LeetCode{
         return false
     }
     
+    /// 斐波那契数
+    func _509(_ N: Int) -> Int {
+        if N <= 0{
+            return 0
+        }
+        
+        if N == 1{
+            return 1
+        }
+        
+        var vi: Int = 0
+        
+        var v1: Int = 0
+        var v2: Int = 1
+        
+        for _ in 2...N{
+            vi = v1 + v2
+            
+            v1 = v2
+            v2 = vi
+        }
+        
+        return vi
+    }
+    
     /// 平方数之和
     func _633(_ c: Int) -> Bool {
         var l: Int = 0
@@ -791,6 +816,33 @@ extension LeetCode{
         s.insert(node.val)
         
         return self.exist(node.left, &s, k) || self.exist(node.right, &s, k)
+    }
+    
+    /// 使用最小花费爬楼梯
+    func _746(_ cost: [Int]) -> Int {
+        // 无论是从0开始，还是从1开始，你都得花费体力跨上0或者1，妈的，脑子宕机了，居然被这个卡住了，一直以为可以直接从0、1开始不花费体力，甚至一度以为题目错了😭
+        switch cost.count {
+        case 0, 1:
+            return 0
+        case 2:
+            return cost[1]
+            
+        default:
+            break
+        }
+        
+        var rv: Int = 0
+        var v1: Int = cost[0]
+        var v2: Int = cost[1]
+        
+        for i in 2..<cost.count{
+            rv = min(v1, v2) + cost[i]
+            
+            v1 = v2
+            v2 = rv
+        }
+        
+        return min(v1, v2)
     }
     
     public class TreeNode {
