@@ -17,16 +17,16 @@ class ViewController: UIViewController {
 //        // 两数交换
 //        var a = 8
 //        var b = 999
-//        
+//
 //        a = a ^ b
 //        b = a ^ b
 //        a = a ^ b
-//        
+//
 //        print("\(a)   \(b)")
         
-        let nums1: [Int] = [10, 15, 20]
+        let nums1: [Int] = [9,6,4,2,3,5,7,0,1]
 
-        print(LeetCode.shared._746(nums1))
+        print(LeetCode.shared._268(nums1))
     }
     
     func 排序(){

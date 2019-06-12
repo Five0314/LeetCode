@@ -695,6 +695,16 @@ extension LeetCode{
         return hasOne
     }
     
+    /// 缺失数字
+    func _268(_ nums: [Int]) -> Int {
+        var rv: Int = nums.count
+        for i in 0..<nums.count{
+            rv ^= i ^ nums[i]
+        }
+        
+        return rv
+    }
+    
     /// 第一个错误的版本
     func _278(_ n: Int) -> Int {
         var l: Int = 1
