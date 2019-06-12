@@ -769,6 +769,25 @@ extension LeetCode{
         return false
     }
     
+    /// 找不同
+    func _389(_ s: String, _ t: String) -> Character {
+        var rv: UInt8 = 0
+        
+        for item in t{
+            if let v = item.asciiValue{
+                rv ^= v
+            }
+        }
+        
+        for item in s{
+            if let v = item.asciiValue{
+                rv ^= v
+            }
+        }
+        
+        return Character.init(Unicode.Scalar.init(rv))
+    }
+    
     /// 斐波那契数
     func _509(_ N: Int) -> Int {
         if N <= 0{
