@@ -813,21 +813,6 @@ extension LeetCode{
         return Character.init(Unicode.Scalar.init(rv))
     }
     
-    /// 反转字符串 II
-    func _541(_ s: String, _ k: Int) -> String {
-        var sarr: [Character] = [Character](s)
-        
-        let c = sarr.count
-        
-        var li: Int = 0
-        for i in 0...c / k << 1{
-            li = i * k << 1
-            self._反转字符串(&sarr, left: li, right: min(li + k, c) - 1)
-        }
-        
-        return String(sarr)
-    }
-    
     /// 斐波那契数
     func _509(_ N: Int) -> Int {
         if N <= 0{
@@ -851,6 +836,46 @@ extension LeetCode{
         }
         
         return vi
+    }
+    
+    /// 反转字符串 II
+    func _541(_ s: String, _ k: Int) -> String {
+        var sarr: [Character] = [Character](s)
+        
+        let c = sarr.count
+        
+        var li: Int = 0
+        for i in 0...c / k << 1{
+            li = i * k << 1
+            self._反转字符串(&sarr, left: li, right: min(li + k, c) - 1)
+        }
+        
+        return String(sarr)
+    }
+    
+    /// 反转字符串中的单词 III
+    func _557(_ s: String) -> String {
+        var sarr: [Character] = [Character](s)
+        
+        let echar: Character = Character.init(" ")
+        let c = sarr.count
+        
+        var l: Int = 0
+        
+        for i in 0..<c{
+            if sarr[i] == echar{
+                if i - l > 1{
+                    self._反转字符串(&sarr, left: l, right: i - 1)
+                }
+                l = i + 1
+            }
+        }
+        
+        if c - l > 1{
+            self._反转字符串(&sarr, left: l, right: c - 1)
+        }
+        
+        return String(sarr)
     }
     
     /// 平方数之和
