@@ -732,21 +732,21 @@ extension LeetCode{
     /// 反转字符串
     func _344(_ s: inout [Character]) {
 //        let c = s.count - 1
-//        
-//        if c <= 0{
-//            return
-//        }
-//        
+//
 //        var mc: Character = Character.init("0")
-//        
+//
 //        for i in 0..<(c + 1)>>1{
 //            mc = s[c - i]
 //            s[c - i] = s[i]
 //            s[i] = mc
 //        }
         
-        var i = 0
-        var j = s.count - 1
+        self._反转字符串(&s, left: 0, right: s.count - 1)
+    }
+    
+    fileprivate func _反转字符串(_ s: inout [Character], left: Int, right: Int){
+        var i = left
+        var j = right
         while i < j {
             (s[i],s[j]) = (s[j],s[i])
             i += 1
@@ -811,6 +811,21 @@ extension LeetCode{
         }
         
         return Character.init(Unicode.Scalar.init(rv))
+    }
+    
+    /// 反转字符串 II
+    func _541(_ s: String, _ k: Int) -> String {
+        var sarr: [Character] = [Character](s)
+        
+        let c = sarr.count
+        
+        var li: Int = 0
+        for i in 0...c / k << 1{
+            li = i * k << 1
+            self._反转字符串(&sarr, left: li, right: min(li + k, c) - 1)
+        }
+        
+        return String(sarr)
     }
     
     /// 斐波那契数

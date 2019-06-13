@@ -27,7 +27,9 @@ class ViewController: UIViewController {
         var nums1: [Character] = ["H"]
 
         print(nums1)
-        LeetCode.shared._344(&nums1)
+        let s = "abcdefg"
+        print(s)
+        print(LeetCode.shared._541(s, 2))
         print(nums1)
     }
     
