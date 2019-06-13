@@ -1241,6 +1241,109 @@ extension LeetCode{
         
         return paths[rows - 1][columns - 1]
     }
+    
+    /// 求众数 II
+    func _229(_ nums: [Int]) -> [Int] {
+        
+        // 第一个众数
+        var c1: Int = 0
+        var rv1: Int = 0
+        
+        // 第二个众数
+        var c2: Int = 0
+        var rv2: Int = 0
+        
+        for item in nums{
+            if c1 == 0{
+                if c2 != 0 && item == rv2{
+                    c2 += 1
+                    continue
+                }
+                
+                c1 = 1
+                rv1 = item
+            }
+            else{
+                if item == rv1{
+                    c1 += 1
+                    continue
+                }
+                
+                if c2 == 0{
+                    c2 = 1
+                    rv2 = item
+                    continue
+                }
+                
+                if item == rv2{
+                    c2 += 1
+                }
+                else{
+                    c2 -= 1
+                    c1 -= 1
+                }
+            }
+            
+//            下列注释的代码合并简化 -> 楼上的代码
+//            if c2 > 0 && item == rv2{ // 当第一个众数正好被抵消完，但是第二个众数却还有值z，这个时候如果当前值是第二个众数，是不能赋值给第一个众数的
+//                c2 += 1
+//                continue
+//            }
+//
+//            // 第一个众数
+//            if c1 == 0{
+//                c1 = 1
+//                rv1 = item
+//                continue
+//            }
+//
+//            if item == rv1{
+//                c1 += 1
+//                continue
+//            }
+//            else if c2 > 0{
+//                if item != rv2{
+//                    c1 -= 1
+//                }
+//            }
+//
+//            // 第二个众数
+//            if c2 == 0{
+//                c2 = 1
+//                rv2 = item
+//                continue
+//            }
+//
+//            if item == rv2{
+//                c2 += 1
+//                continue
+//            }
+//            else if item != rv1{
+//                c2 -= 1
+//            }
+        }
+        
+        // 核验是否是众数，当只有一个众数的时候，上面的算法也会给出两个答案
+        var rv: [Int] = []
+        
+        var cc1: Int = 0 // 核验是否是众数
+        var cc2: Int = 0
+        for item in nums{
+            if item == rv1{
+                cc1 += 1
+            }
+            else if item == rv2{
+                cc2 += 1
+            }
+        }
+        if cc1 > nums.count/3{
+            rv.append(rv1)
+        }
+        if cc2 > nums.count/3{
+            rv.append(rv2)
+        }
+        return rv
+    }
 }
 
 //MARK: 困难

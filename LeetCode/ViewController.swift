@@ -24,10 +24,14 @@ class ViewController: UIViewController {
 //
 //        print("\(a)   \(b)")
         
-        let s = "Let's take LeetCode contest"
-        print(s)
-        print(LeetCode.shared._557(s))
-        print("s'teL ekat edoCteeL tsetnoc" )
+//        let s = "Let's take LeetCode contest"
+//        print(s)
+//        print(LeetCode.shared._557(s))
+//        print("s'teL ekat edoCteeL tsetnoc" )
+        
+        let nums: [Int] = [8,8,7,7,7]
+        print(nums)
+        print(LeetCode.shared._229(nums))
     }
     
     func 排序(){
