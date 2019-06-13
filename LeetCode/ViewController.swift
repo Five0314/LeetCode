@@ -24,9 +24,11 @@ class ViewController: UIViewController {
 //
 //        print("\(a)   \(b)")
         
-        let nums1: [Int] = [9,6,4,2,3,5,7,0,1]
+        var nums1: [Character] = ["H"]
 
-        print(LeetCode.shared._389("abcd", "abcde"))
+        print(nums1)
+        LeetCode.shared._344(&nums1)
+        print(nums1)
     }
     
     func 排序(){

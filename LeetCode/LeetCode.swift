@@ -729,6 +729,31 @@ extension LeetCode{
         return i >= 3
     }
     
+    /// 反转字符串
+    func _344(_ s: inout [Character]) {
+//        let c = s.count - 1
+//        
+//        if c <= 0{
+//            return
+//        }
+//        
+//        var mc: Character = Character.init("0")
+//        
+//        for i in 0..<(c + 1)>>1{
+//            mc = s[c - i]
+//            s[c - i] = s[i]
+//            s[i] = mc
+//        }
+        
+        var i = 0
+        var j = s.count - 1
+        while i < j {
+            (s[i],s[j]) = (s[j],s[i])
+            i += 1
+            j -= 1
+        }
+    }
+    
     /// 有效的完全平方数 - 利用 1+3+5+7+9+…+(2n-1)=n^2，即完全平方数肯定是前n个连续奇数的和
     func _367(_ num: Int) -> Bool {
         var v: Int = num
