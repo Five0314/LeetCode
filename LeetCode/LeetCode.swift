@@ -360,19 +360,19 @@ extension LeetCode{
         }
         return res
     }
-//    func _69(_ x: Int) -> Float {
-//        let y: Float = Float(x)
-//        var res: Float = y
-//        while res * res > y { // 当心死循环哦 x = 12
-//            print(res)
-//            res = (res + y / res) / 2
-//        }
-//        return res
-//    }
-//    /// x 的平方根 - 二分法
-//    func _69_2(_ x: Int) -> Int {
-//        return x
-//    }
+    fileprivate func _69_1(_ x: Int) -> Float {
+        let y: Float = Float(x)
+        var res: Float = y
+        while res * res > y { // 当心死循环哦 x = 12
+            print(res)
+            res = (res + y / res) / 2
+        }
+        return res
+    }
+    /// x 的平方根 - 二分法
+    fileprivate func _69_2(_ x: Int) -> Int {
+        return x
+    }
     
     /// 爬楼梯 f(n) = f(n - 1) + f(n - 2)
     func _70(_ n: Int) -> Int {
@@ -1361,7 +1361,7 @@ extension LeetCode{
         var v1: Int?
         var v2: Int?
         
-        for _ in 0..<((c1 + c2) / 2) {
+        for _ in 0..<((c1 + c2) >> 1) {
             v1 = self._4_get(nums1, idx: idx1, maxCount: c1)
             v2 = self._4_get(nums2, idx: idx2, maxCount: c2)
             
@@ -1390,34 +1390,27 @@ extension LeetCode{
         ///
         v1 = self._4_get(nums1, idx: idx1, maxCount: c1)
         v2 = self._4_get(nums2, idx: idx2, maxCount: c2)
-        // 奇总数
-        if (c1 + c2) & 1 == 1{
-            if let v1 = v1, let v2 = v2{
-                return Double(v1 < v2 ? v1 : v2)
-            }
-            else if let v1 = v1{
-                return Double(v1)
-            }
-            else if let v2 = v2{
-                return Double(v2)
-            }
+        
+        var rv: Double = 0
+        
+        if let v1 = v1, let v2 = v2{
+            rv = Double(v1 < v2 ? v1 : v2)
         }
-        else{ // 偶总数
-            var rv: Double = Double(lv ?? 0)
-            
-            if let v1 = v1, let v2 = v2{
-                rv += Double(v1 < v2 ? v1 : v2)
-            }
-            else if let v1 = v1{
-                rv += Double(v1)
-            }
-            else if let v2 = v2{
-                rv += Double(v2)
-            }
-            return rv * 0.5
+        else if let v1 = v1{
+            rv = Double(v1)
+        }
+        else if let v2 = v2{
+            rv = Double(v2)
         }
         
-        return 0
+        // 奇总数
+        if (c1 + c2) & 1 == 1{
+            return rv
+        }
+        else{ // 偶总数
+            rv += Double(lv ?? 0)
+            return rv * 0.5
+        }
     }
     
     fileprivate func _4_get(_ nums: [Int], idx: Int, maxCount: Int) -> Int?{
@@ -1427,6 +1420,105 @@ extension LeetCode{
         
         return nums[idx]
     }
+    
+    /// 最长回文子串 - Manacher算法
+    func _5(_ s: String) -> String {
+        let midx: Int = s.count * 2
+        
+        if midx <= 2{
+            return s
+        }
+        
+        var arr: [Character] = [Character].init(repeating: Character.init("#"), count: midx + 1)
+        for (i, item) in s.enumerated(){
+            arr[i << 1 + 1] = item
+        }
+        
+        var ti: Int = 0
+        var tl: Int = -1
+        
+        var radius: [Int] = [Int].init(repeating: 0, count: midx + 1)
+        var mx: Int = 0
+        var id: Int = 0
+        
+        for i in 1...midx{
+            if mx > i {
+                radius[i] = min(radius[id << 1 - i], mx - i)
+            }
+            else {
+                id = i
+            }
+            
+            while i - radius[i] >= 0 && i + radius[i] <= midx && arr[i - radius[i]] == arr[i + radius[i]]{
+                radius[i] += 1
+            }
+            
+            if mx < id + radius[i] - 1{
+                mx = id + radius[i] - 1
+                id = i
+            }
+            
+            if tl < radius[i]{ // 记录最大值
+                tl = radius[i]
+                ti = i
+            }
+        }
+        
+        return s.substring(location: ti >> 1 - (tl - 1) >> 1, length: (tl - 1) >> 1 * 2 + ti & 1)
+        
+        
+//        if s.count <= 1 {
+//            return s;
+//        }
+//        var temp: Array<String> = ["#"];
+//        for c in s {
+//            temp.append(String.init(c))
+//            temp.append("#");
+//        }
+//        var maxIndex:Int = 0
+//        var max:Int = 0
+//        var arrIndex:[Int] = [1]
+//        var maxLen: Int = 1
+//        var maxLenIndex:Int = 0
+//        for i in 1..<temp.count {
+//            let j = maxIndex - (i - maxIndex)
+//
+//            if max > i && j >= 0 {
+//                arrIndex.append(min(arrIndex[j], max - i))
+//            } else {
+//                arrIndex.append(1)
+//            }
+//
+//            while i + arrIndex[i] < temp.count && i - arrIndex[i] >= 0 && temp[i+arrIndex[i]] == temp[i-arrIndex[i]] {
+//                arrIndex[i] += 1
+//            }
+//
+//            if i + arrIndex[i] > max {
+//                max = i + arrIndex[i]
+//                maxIndex = i
+//            }
+//            if arrIndex[i] > maxLen {
+//                maxLen = arrIndex[i]
+//                maxLenIndex = i
+//            }
+//        }
+//
+//        let startIndex = s.index(s.startIndex, offsetBy: (maxLenIndex-(maxLen-1))/2)
+//        let endIndex = s.index(startIndex, offsetBy: maxLen-1-1)
+//        let maxStr = String(s[startIndex...endIndex])
+//        return maxStr;
+        
+//        if ti & 1 == 1{ // aba
+//            let ns = s.substring(location: ti >> 1 - (tv - 1) >> 1, length: (tv - 1) >> 1 * 2 + 1)
+//            return ns
+//        }
+//        else{ // abba
+//            let ns = s.substring(location: ti >> 1 - (tv - 1) >> 1, length: (tv - 1) >> 1 * 2)
+//            return ns
+//        }
+        
+    }
+
     
     // KMP算法的核心，是一个被称为部分匹配表(Partial Match Table)的数组。
     
