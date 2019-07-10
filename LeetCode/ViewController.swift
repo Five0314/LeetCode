@@ -13,29 +13,21 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+//        let p: [Int] = [-1, 0, 1, 2, -1, -4] // [-1, 0, 1], [-1, -1, 2]
+//        let p: [Int] = [-2,0,1,1,2] // [[-2,0,2],[-2,1,1]]
+//        let p: [Int] = [3,0,-2,-1,1,2] // [[-2,-1,3],[-2,0,2],[-1,0,1]]
+//        let p: [Int] = [1,1,-2] // [[-2,1,1]]
+//        let p: [Int] = [-4,-2,-1] // []
+//        let p: [Int] = [1, -1] // []
         
-//        // 两数交换
-//        var a = 8
-//        var b = 999
-//
-//        a = a ^ b
-//        b = a ^ b
-//        a = a ^ b
-//
-//        print("\(a)   \(b)")
+        let p: [Int] = [] // []
+//        let p: [Int] = [0,0,0] // [0, 0, 0]
+//        let p: [Int] = [-4,-2,-2,-2,0,1,2,2,2,3,3,4,4,6,6] // [[-4,-2,6],[-4,0,4],[-4,1,3],[-4,2,2],[-2,-2,4],[-2,0,2]]
+//        let p: [Int] = [-1,-2,-3,4,1,3,0,3,-2,1,-2,2,-1,1,-5,4,-3] // [[-5,1,4],[-5,2,3],[-3,-1,4],[-3,0,3],[-3,1,2],[-2,-2,4],[-2,-1,3],[-2,0,2],[-2,1,1],[-1,-1,2],[-1,0,1]]
         
-//        let s = "Let's take LeetCode contest"
-//        print(s)
-//        print(LeetCode.shared._557(s))
-//        print("s'teL ekat edoCteeL tsetnoc" )
-        
-//        let nums: [Int] = [8,8,7,7,7]
-//        print(nums)
-//        print(LeetCode.shared._229(nums))
-        
-        let p: String = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabcaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-        
-        let p2 = LeetCode.shared._5(p)
+        let p2 = LeetCode.shared._15(p)
+        print(p2)
         print(p2.count)
         print(p.count)
     }

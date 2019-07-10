@@ -1125,6 +1125,66 @@ extension LeetCode{
         }
     }
     
+    /// 三数之和
+    func _15(_ nums: [Int]) -> [[Int]] {
+        let sortedNums = nums.sorted()
+        
+        var rv: [[Int]] = []
+        
+        let maxIndex: Int = nums.count - 1
+        if maxIndex < 2 {  return [] }
+        
+        var msv: Int = 0
+
+        var d: Int = 0
+        
+        // 2. 遍历负数
+        for i in 0...maxIndex{
+            if sortedNums[i] > 0 { break }
+            
+            if i != 0{
+                if sortedNums[i] == sortedNums[i - 1]{ // 临近的两个相同的数据，就没必要再来一次
+                    continue
+                }
+            }
+            
+            // 剩下的数中，找和为N的两个数
+            var l: Int = i + 1
+            var r: Int = maxIndex
+            
+            while l < r{
+                msv = sortedNums[l] + sortedNums[r] + sortedNums[i]
+                
+                if msv > 0{
+                    r -= 1
+                }
+                else if msv < 0{
+                    l += 1
+                }
+                else{
+                    rv.append([sortedNums[i], sortedNums[l], sortedNums[r]])
+                    
+                    // l
+                    d = 1
+                    while l + d <= maxIndex && sortedNums[l + d] == sortedNums[l]{
+                        d += 1
+                    }
+                    l += d
+                    
+                    // r
+                    d = 1
+                    while r - d >= 0 &&  sortedNums[r - d] == sortedNums[r]{
+                        r -= 1
+                    }
+                    r -= d
+                    
+                }
+            }
+        }
+        
+        return rv
+    }
+    
     /// 不同路径 - 63的算法也可适用于此题
     func _62(_ m: Int, _ n: Int) -> Int {
         var paths = [[Int]].init(repeating: [Int].init(repeating: 1, count: n), count: m) // 记录到当前节点的路径数量
