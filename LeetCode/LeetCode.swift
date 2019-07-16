@@ -1185,6 +1185,51 @@ extension LeetCode{
         return rv
     }
     
+    /// 最接近的三数之和
+    func _16(_ nums: [Int], _ target: Int) -> Int {
+        let sortedNums = nums.sorted()
+        
+        let maxIndex: Int = nums.count - 1
+        
+        var rv: Int = Int.max
+        var d: Int = 0
+        
+        // 剩下的数中，找和为N的两个数
+        var l: Int = 0
+        var r: Int = maxIndex
+        
+        for i in 0...maxIndex-2{
+            
+            l = i + 1
+            r = maxIndex
+            
+            while l < r{
+                d = sortedNums[i] + sortedNums[l] + sortedNums[r] - target
+                
+                if d == 0{
+                    return target
+                }
+                
+                if d < 0{
+                    if abs(rv) > abs(d){
+                        rv = d
+                    }
+                    
+                    l += 1
+                }
+                else {
+                    if abs(rv) > abs(d){
+                        rv = d
+                    }
+                    
+                    r -= 1
+                }
+            }
+        }
+        
+        return rv + target
+    }
+    
     /// 不同路径 - 63的算法也可适用于此题
     func _62(_ m: Int, _ n: Int) -> Int {
         var paths = [[Int]].init(repeating: [Int].init(repeating: 1, count: n), count: m) // 记录到当前节点的路径数量
