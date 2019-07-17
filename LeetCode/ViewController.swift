@@ -14,11 +14,48 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let p: [Int] = [-1, 2, 1, -4]
-//        let p: [Int] = [0, 0, 0]
+        let n11 = ListNode.init(1)
+        let n12 = ListNode.init(4)
+        let n13 = ListNode.init(5)
+        n11.next = n12
+        n12.next = n13
+
+
+        let n21 = ListNode.init(1)
+        let n22 = ListNode.init(3)
+        let n23 = ListNode.init(4)
+        n21.next = n22
+        n22.next = n23
+//
+//
+//        let n31 = ListNode.init(2)
+//        let n32 = ListNode.init(6)
+//        n31.next = n32
         
-        let p2 = LeetCode.shared._16(p, 1)
-        print(p2)
+//        let n11 = ListNode.init(-1)
+//        let n12 = ListNode.init(5)
+//        let n13 = ListNode.init(1)
+//        let n14 = ListNode.init(1)
+//        n11.next = n12
+//        n12.next = n13
+//        n13.next = n14
+//
+//        let n21 = ListNode.init(6)
+//        let n22 = ListNode.init(1)
+//        let n23 = ListNode.init(0)
+//        n21.next = n22
+//        n22.next = n23
+        
+        
+//        var p = LeetCode.shared._23([nil, n11, nil, n21])
+        var p = LeetCode.shared._21(n11, n21)
+//        p = LeetCode.shared._21(p, n31)
+        
+        while p?.next != nil{
+            print(p!.val)
+            p = p?.next
+        }
+        print(p?.val ?? -1)
     }
     
     func 排序(){

@@ -134,48 +134,45 @@ extension LeetCode{
         
         return true
     }
-    
-    public class ListNode_21 {
-        public var val: Int
-        public var next: ListNode_21?
-        public init(_ val: Int) {
-            self.val = val
-            self.next = nil
-        }
-    }
-    
+
     /// 合并两个有序链表
-    func _21(_ l1: ListNode_21?, _ l2: ListNode_21?) -> ListNode_21? {
+    func _21(_ l1: ListNode?, _ l2: ListNode?) -> ListNode? {
         
-        var rv: ListNode_21?
-        var ln: ListNode_21?
+        var rv: ListNode?
+        var ln: ListNode?
         
         var n1 = l1
         var n2 = l2
         
-        var v1 = Int.max
-        var v2 = Int.max
-        
-        while n1 != nil || n2 != nil{
-            v1 = n1?.val ?? Int.max
-            v2 = n2?.val ?? Int.max
-            
-            var cn: ListNode_21?
-            if v2 < v1 {
-                cn = n2
+        while true{
+            if let v1 = n1?.val, let v2 = n2?.val{
+                if v1 <= v2{
+                    ln?.next = n1
+                    ln = n1
+                    n1 = n1?.next
+                }
+                else{
+                    ln?.next = n2
+                    ln = n2
+                    n2 = n2?.next
+                }
+            }
+            else if n1 != nil{
+                ln?.next = n1
+                ln = n1
+                n1 = n1?.next
+            }
+            else if n2 != nil{
+                ln?.next = n2
+                ln = n2
                 n2 = n2?.next
             }
             else{
-                cn = n1
-                n1 = n1?.next
+                break
             }
+            
             if rv == nil{
-                rv = cn
-                ln = rv
-            }
-            else{
-                ln?.next = cn
-                ln = cn
+                rv = ln
             }
         }
         
@@ -980,6 +977,15 @@ extension LeetCode{
     }
 }
 
+public class ListNode {
+    public var val: Int
+    public var next: ListNode?
+    public init(_ val: Int) {
+        self.val = val
+        self.next = nil
+    }
+}
+
 //MARK: 中等
 extension LeetCode{
     /// 两数相加
@@ -1017,15 +1023,6 @@ extension LeetCode{
         }
         
         return rootNode
-    }
-    
-    public class ListNode {
-        public var val: Int
-        public var next: ListNode?
-        public init(_ val: Int) {
-            self.val = val
-            self.next = nil
-        }
     }
     
     /// 无重复字符的最长子
@@ -1624,6 +1621,62 @@ extension LeetCode{
         
     }
 
+    /// 合并K个排序链表
+    func _23(_ lists: [ListNode?]) -> ListNode? {
+        
+        var isOdd: Bool = false // 奇总数
+        var lists_2 = lists
+        var mlen: Int = lists_2.count
+        
+        while mlen > 1{
+            
+            isOdd = mlen & 1 == 1
+            
+            for i in 0..<mlen>>1{
+//                print(" ----- ")
+//                var p = lists_2[i << 1]
+//                while p?.next != nil{
+//                    print(p!.val)
+//                    p = p?.next
+//                }
+//                if let v = p?.val{
+//                    print(v)
+//                }
+//
+//                print(" + ")
+//                p = lists_2[i << 1 + 1]
+//                while p?.next != nil{
+//                    print(p!.val)
+//                    p = p?.next
+//                }
+//                if let v = p?.val{
+//                    print(v)
+//                }
+                
+                let node = self._21(lists_2[i << 1], lists_2[i << 1 + 1])
+                
+//                print(" = ")
+//                p = node
+//                while p?.next != nil{
+//                    print(p!.val)
+//                    p = p?.next
+//                }
+//                if let v = p?.val{
+//                    print(v)
+//                }
+                
+                lists_2[i] = node
+                mlen = i + 1
+            }
+            
+            if isOdd{
+                lists_2[mlen] = lists_2[mlen << 1]
+                mlen += 1
+            }
+        }
+
+        return lists_2.first ?? nil
+    }
     
     // KMP算法的核心，是一个被称为部分匹配表(Partial Match Table)的数组。
     
