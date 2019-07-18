@@ -59,13 +59,11 @@ class ViewController: UIViewController {
         
         
 //        let p: [Int] = [4,5,6,7,8,1,2,3]
-//        let p: [Int] = [4,5,6,7,0,1,2]
-        let p: [Int] = [3,1]
+        let p: [Int] = [4,5,6,7,0,1,2]
+//        let p: [Int] = [3,1]
         
-        for item in p{
-            let v = LeetCode.shared._33(p, item)
-            print(v)
-        }
+        let v = LeetCode.shared._153(p)
+        print(v)
         
 
     }

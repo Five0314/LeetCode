@@ -1382,6 +1382,26 @@ extension LeetCode{
         return paths[rows - 1][columns - 1]
     }
     
+    /// 寻找旋转排序数组中的最小值
+    func _153(_ nums: [Int]) -> Int {
+        var l: Int = 0
+        var r: Int = nums.count - 1
+        var m: Int = 0
+        
+        while l < r {
+            m = (r + l) >> 1
+            
+            if nums[m] < nums.last!{
+                r = m
+            }
+            else{
+                l = m + 1
+            }
+        }
+        
+        return nums[l]
+    }
+    
     /// 求众数 II
     func _229(_ nums: [Int]) -> [Int] {
         
