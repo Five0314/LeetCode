@@ -1227,6 +1227,44 @@ extension LeetCode{
         return rv + target
     }
     
+    /// 搜索旋转排序数组
+    func _33(_ nums: [Int], _ target: Int) -> Int {
+        
+        let maxIdx: Int = nums.count - 1
+        
+        var l: Int = 0
+        var r: Int = maxIdx
+        
+        var m: Int = 0
+        
+        while l <= r{
+            m = (l + r) >> 1
+            
+            if nums[m] == target{
+                return m
+            }
+            
+            if target < nums[m]{ // 找小的那部分
+                if target <= nums[r] && nums[m] > nums[r]{
+                    l = m + 1
+                }
+                else{
+                    r = m - 1
+                }
+            }
+            else{ // 找大的那部分
+                if target >= nums[l] && nums[m] < nums[l]{
+                    r = m - 1
+                }
+                else {
+                    l = m + 1
+                }
+            }
+        }
+
+        return -1
+    }
+    
     /// 不同路径 - 63的算法也可适用于此题
     func _62(_ m: Int, _ n: Int) -> Int {
         var paths = [[Int]].init(repeating: [Int].init(repeating: 1, count: n), count: m) // 记录到当前节点的路径数量
