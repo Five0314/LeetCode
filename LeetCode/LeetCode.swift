@@ -1382,6 +1382,80 @@ extension LeetCode{
         return paths[rows - 1][columns - 1]
     }
     
+    /// 搜索旋转排序数组 II - 基于33题，加了首尾数字一样数字类型的判断
+    func _81(_ nums: [Int], _ target: Int) -> Bool {
+        
+        let maxIdx: Int = nums.count - 1
+        
+        var l: Int = 0
+        var r: Int = maxIdx
+        
+        var m: Int = 0
+        
+        while l <= r{
+            m = (l + r) >> 1
+            
+            if nums[m] == target{
+                return true
+            }
+            
+            if target < nums[m]{ // 找小的那部分
+                if target <= nums[r]{
+                    if nums[m] > nums[r]{
+                        l = m + 1
+                    }
+                    else if nums[m] == nums[l] && m > 0{ // 11111011111
+                        for i in m...maxIdx{
+                            if nums[i] < nums[m]{
+                                l = m + 1
+                                break
+                            }
+                        }
+                        
+                        if l != m + 1{
+                            r = m - 1
+                        }
+                    }
+                    else{
+                        r = m - 1
+                    }
+                }
+                else{
+                    r = m - 1
+                }
+            }
+            else{ // 找大的那部分
+                if target >= nums[l]{
+                    if nums[m] < nums[l]{
+                        r = m - 1
+                    }
+                    else if nums[m] == nums[l] && m < maxIdx{ // 11111311111
+                        // 11 1 11311111
+                        for i in m + 1...maxIdx{
+                            if nums[i] > nums[m]{ // 说明大数区间在右边
+                                l = m + 1
+                                break
+                            }
+                        }
+                        
+                        if l != m + 1{
+                            r = m - 1
+                        }
+                    }
+                    else{
+                        l = m + 1
+                    }
+                    
+                }
+                else {
+                    l = m + 1
+                }
+            }
+        }
+        
+        return false
+    }
+    
     /// 寻找旋转排序数组中的最小值
     func _153(_ nums: [Int]) -> Int {
         var l: Int = 0
@@ -1391,7 +1465,7 @@ extension LeetCode{
         while l < r {
             m = (r + l) >> 1
             
-            if nums[m] < nums.last!{
+            if nums[m] < nums[r]{
                 r = m
             }
             else{
