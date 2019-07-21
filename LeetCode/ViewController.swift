@@ -57,8 +57,8 @@ class ViewController: UIViewController {
 //        }
 //        print(p?.val ?? -1)
         
-        let p: [Int] = [2,2,3,3,2,3,2,2]
-        let v = LeetCode.shared._137(p)
+        let p: [Int] = [1,2,1,3,2,5]
+        let v = LeetCode.shared._260(p)
         print(v)
     }
     

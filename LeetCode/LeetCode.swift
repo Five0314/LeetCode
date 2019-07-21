@@ -1602,6 +1602,30 @@ extension LeetCode{
         }
         return rv
     }
+    
+    /// 只出现一次的数字 III
+    func _260(_ nums: [Int]) -> [Int] {
+        
+        var a: Int = 0, b: Int = 0
+        var s: Int = 0
+        
+        for item in nums{
+            s ^= item
+        }
+        
+        let m: Int = s & -s;
+        
+        for item in nums{
+            if item & m == 0{
+                a ^= item
+            }
+            else{
+                b ^= item
+            }
+        }
+        
+        return [a, b]
+    }
 }
 
 //MARK: 困难
