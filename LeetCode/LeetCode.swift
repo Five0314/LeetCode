@@ -1456,6 +1456,30 @@ extension LeetCode{
         return false
     }
     
+    /// 只出现一次的数字 II
+    func _137(_ nums: [Int]) -> Int {
+//        var one: Int = 0, two: Int = 0, three: Int = 0
+//
+//        for item in nums{
+//            two |= one & item
+//            one ^= item
+//            three = one & two
+//
+//            one &= ~three
+//            two &= ~three
+//        }
+//
+//        return one
+        
+        var a = 0,b = 0
+        nums.forEach { (x) in
+            b = (b ^ x) & ~a;
+            a = (a ^ x) & ~b;
+        }
+
+        return b
+    }
+    
     /// 寻找旋转排序数组中的最小值
     func _153(_ nums: [Int]) -> Int {
         var l: Int = 0
