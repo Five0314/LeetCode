@@ -1382,6 +1382,34 @@ extension LeetCode{
         return paths[rows - 1][columns - 1]
     }
     
+    /// 子集 - 位运算解法
+    func _78(_ nums: [Int]) -> [[Int]] {
+        
+        let n = Int(pow(2.0, Double(nums.count)))
+        
+        // 1. 二进制
+        var rv: [[Int]] = [[Int]].init(repeating: [], count: n)
+        var ci: Int = 0
+        var j: Int = 0
+        
+        for i in 0..<n{
+            
+            ci = i
+            j = 0
+            
+            while ci != 0{
+                if ci & 1 == 1{
+                    rv[i].append(nums[j])
+                }
+                
+                j += 1
+                ci >>= 1
+            }
+        }
+        
+        return rv
+    }
+    
     /// 搜索旋转排序数组 II - 基于33题，加了首尾数字一样数字类型的判断
     func _81(_ nums: [Int], _ target: Int) -> Bool {
         
