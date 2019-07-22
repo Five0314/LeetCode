@@ -46,19 +46,7 @@ class ViewController: UIViewController {
 //        n21.next = n22
 //        n22.next = n23
         
-        
-//        var p = LeetCode.shared._23([nil, n11, nil, n21])
-//        var p = LeetCode.shared._21(n11, n21)
-//        p = LeetCode.shared._21(p, n31)
-        
-//        while p?.next != nil{
-//            print(p!.val)
-//            p = p?.next
-//        }
-//        print(p?.val ?? -1)
-        
-        let p: [Int] = [1,2,1,3,2,5]
-        let v = LeetCode.shared._260(p)
+        let v = LeetCode.shared._201(3, 5)
         print(v)
     }
     

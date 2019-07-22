@@ -1500,6 +1500,21 @@ extension LeetCode{
         return nums[l]
     }
     
+    /// 数字范围按位与
+    func _201(_ m: Int, _ n: Int) -> Int {
+        
+        var l: Int = m
+        var r: Int = n
+        
+        var count = 0
+        while l != r {
+            l >>= 1
+            r >>= 1
+            count += 1
+        }
+        return l << count
+    }
+    
     /// 求众数 II
     func _229(_ nums: [Int]) -> [Int] {
         
