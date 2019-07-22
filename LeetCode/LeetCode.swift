@@ -674,22 +674,7 @@ extension LeetCode{
     
     /// 231. 2的幂
     func _231(_ n: Int) -> Bool{
-        
-        var hasOne: Bool = false
-        
-        var nn: Int = n
-        while nn > 0{
-            if nn & 1 == 1{
-                if hasOne{
-                    return false
-                }
-                hasOne = true
-            }
-            
-            nn >>= 1
-        }
-        
-        return hasOne
+        return n > 0 && n & (n - 1) == 0
     }
     
     /// 缺失数字
@@ -724,6 +709,12 @@ extension LeetCode{
     
     fileprivate func isBadVersion(_ i: Int) -> Bool{
         return i >= 3
+    }
+    
+    
+    /// 4的幂
+    func _342(_ num: Int) -> Bool {
+        return num > 0 && num & (num - 1) == 0 && num & 0b1010101010101010101010101010101 == num
     }
     
     /// 反转字符串
@@ -1998,12 +1989,7 @@ extension LeetCode{
         
         return String(s.suffix(from: s.index(s.startIndex, offsetBy: j + 1)).reversed()) + s
     }
-    
-    /// 4的幂
-    func _342(_ num: Int) -> Bool {
-        return num > 0 && num & (num - 1) == 0 && num & 0b1010101010101010101010101010101 == num
-    }
-    
+
     /// 计算各个位数不同的数字个数
     func _357(_ n: Int) -> Int {
         
