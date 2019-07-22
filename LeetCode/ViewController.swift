@@ -48,7 +48,7 @@ class ViewController: UIViewController {
         
         let nums: [Int] = [1, 2, 3]
         
-        let v = LeetCode.shared._78(nums)
+        let v = LeetCode.shared._342(16)
         print(v)
     }
     

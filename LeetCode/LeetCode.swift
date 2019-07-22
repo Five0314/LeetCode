@@ -1999,6 +1999,11 @@ extension LeetCode{
         return String(s.suffix(from: s.index(s.startIndex, offsetBy: j + 1)).reversed()) + s
     }
     
+    /// 4的幂
+    func _342(_ num: Int) -> Bool {
+        return num > 0 && num & (num - 1) == 0 && num & 0b1010101010101010101010101010101 == num
+    }
+    
     /// 计算各个位数不同的数字个数
     func _357(_ n: Int) -> Int {
         
