@@ -1028,17 +1028,6 @@ extension LeetCode{
         return min(v1, v2)
     }
     
-    public class TreeNode {
-        public var val: Int
-        public var left: TreeNode?
-        public var right: TreeNode?
-        public init(_ val: Int) {
-            self.val = val
-            self.left = nil
-            self.right = nil
-        }
-    }
-    
     /// 重复 N 次的元素
     func _961(_ A: [Int]) -> Int {
         
@@ -1054,6 +1043,17 @@ extension LeetCode{
         }
         
         return 0
+    }
+}
+
+public class TreeNode {
+    public var val: Int
+    public var left: TreeNode?
+    public var right: TreeNode?
+    public init(_ val: Int) {
+        self.val = val
+        self.left = nil
+        self.right = nil
     }
 }
 
@@ -1343,6 +1343,42 @@ extension LeetCode{
         }
 
         return -1
+    }
+    
+    /// 全排列 - 动态规划
+    func _46(_ nums: [Int]) -> [[Int]] {
+        if nums.isEmpty { return [] }
+        
+        var rv: [[Int]] = [[nums[0]]]
+        
+        for i in 0..<nums.count{
+            rv[i] = 
+        }
+        
+//        for j in 1..<nums.count{
+//            let num = nums[j]
+//
+//            var v1: [[Int]] = []
+//
+//            for item in rv{
+//                var v2: [[Int]] = []
+//
+//                for i in 0..<item.count{
+//                    var v3: [Int] = item
+//                    v3.insert(num, at: i)
+//                    v2.append(v3)
+//                }
+//                var v3: [Int] = item
+//                v3.append(num)
+//                v2.append(v3)
+//
+//                v1.append(contentsOf: v2)
+//            }
+//
+//            rv = v1
+//        }
+     
+        return rv
     }
     
     /// 不同路径 - 63的算法也可适用于此题
