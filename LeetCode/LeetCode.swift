@@ -1351,32 +1351,28 @@ extension LeetCode{
         
         var rv: [[Int]] = [[nums[0]]]
         
-        for i in 0..<nums.count{
-            rv[i] = 
+        for j in 1..<nums.count{
+            let num = nums[j]
+            
+            var v1: [[Int]] = []
+            
+            for item in rv{
+                var v2: [[Int]] = []
+                
+                for i in 0..<item.count{
+                    var v3: [Int] = item
+                    v3.insert(num, at: i)
+                    v2.append(v3)
+                }
+                var v3: [Int] = item
+                v3.append(num)
+                v2.append(v3)
+                
+                v1.append(contentsOf: v2)
+            }
+            
+            rv = v1
         }
-        
-//        for j in 1..<nums.count{
-//            let num = nums[j]
-//
-//            var v1: [[Int]] = []
-//
-//            for item in rv{
-//                var v2: [[Int]] = []
-//
-//                for i in 0..<item.count{
-//                    var v3: [Int] = item
-//                    v3.insert(num, at: i)
-//                    v2.append(v3)
-//                }
-//                var v3: [Int] = item
-//                v3.append(num)
-//                v2.append(v3)
-//
-//                v1.append(contentsOf: v2)
-//            }
-//
-//            rv = v1
-//        }
      
         return rv
     }
