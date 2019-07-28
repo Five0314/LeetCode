@@ -801,6 +801,95 @@ extension LeetCode{
         return Character.init(Unicode.Scalar.init(rv))
     }
     
+    /// 字符串相加
+    func _415(_ num1: String, _ num2: String) -> String {
+        
+        let i1: Int = num1.count - 1
+        if i1 < 0 { return num2 }
+        
+        let i2: Int = num2.count - 1
+        if i2 < 0 { return num1 }
+        
+        let n1: [Character] = Array(num1)
+        let n2: [Character] = Array(num2)
+        
+        var rv: [UInt8] = [UInt8].init(repeating: 0, count: max(i1, i2) + 1)
+        var mv: UInt8 = 0
+        var nv: UInt8 = 0
+        
+        
+        let d = abs(i1 - i2)
+        if d == 0{
+            for i in stride(from: i1, through: 0, by: -1){
+                mv = n1[i].asciiValue! + n2[i].asciiValue! + nv - 96
+                if mv > 9{
+                    rv[i] = mv - 10
+                    nv = 1
+                }
+                else{
+                    rv[i] = mv
+                    nv = 0
+                }
+            }
+        }
+        else if i1 > i2{
+            for i in stride(from: i1, through: d, by: -1){
+                mv = n1[i].asciiValue! + n2[i - d].asciiValue! + nv - 96
+                if mv > 9{
+                    rv[i] = mv - 10
+                    nv = 1
+                }
+                else{
+                    rv[i] = mv
+                    nv = 0
+                }
+            }
+            
+            for i in stride(from: d - 1, through: 0, by: -1){
+                mv = n1[i].asciiValue! + nv - 48
+                if mv > 9{
+                    rv[i] = mv - 10
+                    nv = 1
+                }
+                else{
+                    rv[i] = mv
+                    nv = 0
+                }
+            }
+        }
+        else if i2 > i1{
+            for i in stride(from: i2, through: d, by: -1){
+                mv = n1[i - d].asciiValue! + n2[i].asciiValue! + nv - 96
+                if mv > 9{
+                    rv[i] = mv - 10
+                    nv = 1
+                }
+                else{
+                    rv[i] = mv
+                    nv = 0
+                }
+            }
+            
+            for i in stride(from: d - 1, through: 0, by: -1){
+                mv = n2[i].asciiValue! + nv - 48
+                if mv > 9{
+                    rv[i] = mv - 10
+                    nv = 1
+                }
+                else{
+                    rv[i] = mv
+                    nv = 0
+                }
+            }
+        }
+
+        if nv > 0{
+            rv.insert(nv, at: 0)
+        }
+        
+        return rv.map(String.init).joined()
+    }
+    
     /// 斐波那契数
     func _509(_ N: Int) -> Int {
         if N <= 0{
