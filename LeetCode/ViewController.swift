@@ -46,9 +46,9 @@ class ViewController: UIViewController {
 //        n21.next = n22
 //        n22.next = n23
         
-        let nums: [Int] = [1]
-        
-        let v = LeetCode.shared._46(nums)
+        let nums: [Int] = [1, 2, 3]
+            
+        let v = LeetCode.shared._47(nums)
         print(v)
     }
     
