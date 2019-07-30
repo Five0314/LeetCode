@@ -346,139 +346,139 @@ extension LeetCode{
     }
     
     fileprivate func _47_作废() {
-    //    /// 耗时96
-    //    func _47(_ nums: [Int]) -> [[Int]] {
-    //        if nums.isEmpty { return [] }
-    //        if nums.count == 1 { return [nums]}
-    //
-    //        let numSet: Set<Int> = Set(nums)
-    //
-    //        var rv: [[Int]] = []
-    //
-    //        for num in numSet{
-    //
-    //            var otherNums: [Int] = nums
-    //            for (i, v) in otherNums.enumerated(){
-    //                if v == num{
-    //                    otherNums.remove(at: i)
-    //                    break
-    //                }
-    //            }
-    //            let others: [[Int]] = self._47_2(otherNums)
-    //
-    //            for var item in others{
-    //                item.insert(num, at: 0)
-    //                rv.append(item)
-    //            }
-    //        }
-    //
-    //        return rv
-    //    }
-    //    func _47_Exist(_ nums: inout [Int], l: Int, r: Int, target: Int) -> Bool{
-    //        for i in l...r{
-    //            if nums[i] == target{
-    //                return true
-    //            }
-    //        }
-    //        return false
-    //    }
-    //    func _47(_ nums1: [Int]) -> [[Int]] {
-    //        if nums1.isEmpty { return [] }
-    //
-    //        let maxi = nums1.count - 1
-    //
-    //        var newNums: [Int] = nums1
-    //        // 双指针法 保证前面的都是不一样的
-    //        var l: Int = 1
-    //        var r: Int = maxi
-    //
-    //        while l < r{
-    //            if self._47_Exist(&newNums, l: 0, r: l - 1, target: newNums[l]){ // 存在，说明此值乃重复的值，后移
-    //                (newNums[l], newNums[r]) = (newNums[r], newNums[l])
-    //
-    //                r -= 1
-    //            }
-    //            else{
-    //                l += 1
-    //            }
-    //        }
-    //
-    //
-    //        // 前面肯定没有重复的部分
-    //        var rv: [[Int]] = [[newNums[0]]]
-    //
-    //        for j in 1...l{
-    //            let num = newNums[j]
-    //
-    //            var v1: [[Int]] = []
-    //
-    //            for item in rv{
-    //                var v2: [[Int]] = []
-    //
-    //                let c = item.count
-    //
-    //                var v3: [Int] = item // 首
-    //                v3.insert(num, at: 0)
-    //                v2.append(v3)
-    //
-    //                if c > 1{ // 中
-    //                    for i in 1..<c{
-    //                        if i == 0 || item[i] != item[i - 1] {
-    //                            var v3: [Int] = item
-    //                            v3.insert(num, at: i)
-    //                            v2.append(v3)
-    //                        }
-    //                    }
-    //                }
-    //
-    //                if num != item[c - 1]{ // 尾
-    //                    v3 = item
-    //                    v3.append(num)
-    //                    v2.append(v3)
-    //                }
-    //
-    //                v1.append(contentsOf: v2)
-    //            }
-    //
-    //            rv = v1
-    //        }
-    //
-    //        if l >= maxi{
-    //            return rv
-    //        }
-    //
-    //        // 再把后面铁定有重复的部分 - 插入
-    //        for j in (l + 1)...maxi{
-    //            let num = newNums[j]
-    //
-    //            var v1: [[Int]] = []
-    //
-    //            for item in rv{
-    //                var v2: [[Int]] = []
-    //
-    //                let c = item.count
-    //
-    //                for i in 0..<c{
-    //                    if item[i] != num{
-    //                        var v3: [Int] = item
-    //                        v3.insert(num, at: i)
-    //                        v2.append(v3)
-    //                    }
-    //                }
-    //
-    //                // 尾
-    //                var v3: [Int] = item
-    //                v3.append(num)
-    //                v2.append(v3)
-    //
-    //                v1.append(contentsOf: v2)
-    //            }
-    //
-    //            rv = v1
-    //        }
-    //
-    //        return rv
-    //    }
+        //    /// 耗时96
+        //    func _47(_ nums: [Int]) -> [[Int]] {
+        //        if nums.isEmpty { return [] }
+        //        if nums.count == 1 { return [nums]}
+        //
+        //        let numSet: Set<Int> = Set(nums)
+        //
+        //        var rv: [[Int]] = []
+        //
+        //        for num in numSet{
+        //
+        //            var otherNums: [Int] = nums
+        //            for (i, v) in otherNums.enumerated(){
+        //                if v == num{
+        //                    otherNums.remove(at: i)
+        //                    break
+        //                }
+        //            }
+        //            let others: [[Int]] = self._47_2(otherNums)
+        //
+        //            for var item in others{
+        //                item.insert(num, at: 0)
+        //                rv.append(item)
+        //            }
+        //        }
+        //
+        //        return rv
+        //    }
+        //    func _47_Exist(_ nums: inout [Int], l: Int, r: Int, target: Int) -> Bool{
+        //        for i in l...r{
+        //            if nums[i] == target{
+        //                return true
+        //            }
+        //        }
+        //        return false
+        //    }
+        //    func _47(_ nums1: [Int]) -> [[Int]] {
+        //        if nums1.isEmpty { return [] }
+        //
+        //        let maxi = nums1.count - 1
+        //
+        //        var newNums: [Int] = nums1
+        //        // 双指针法 保证前面的都是不一样的
+        //        var l: Int = 1
+        //        var r: Int = maxi
+        //
+        //        while l < r{
+        //            if self._47_Exist(&newNums, l: 0, r: l - 1, target: newNums[l]){ // 存在，说明此值乃重复的值，后移
+        //                (newNums[l], newNums[r]) = (newNums[r], newNums[l])
+        //
+        //                r -= 1
+        //            }
+        //            else{
+        //                l += 1
+        //            }
+        //        }
+        //
+        //
+        //        // 前面肯定没有重复的部分
+        //        var rv: [[Int]] = [[newNums[0]]]
+        //
+        //        for j in 1...l{
+        //            let num = newNums[j]
+        //
+        //            var v1: [[Int]] = []
+        //
+        //            for item in rv{
+        //                var v2: [[Int]] = []
+        //
+        //                let c = item.count
+        //
+        //                var v3: [Int] = item // 首
+        //                v3.insert(num, at: 0)
+        //                v2.append(v3)
+        //
+        //                if c > 1{ // 中
+        //                    for i in 1..<c{
+        //                        if i == 0 || item[i] != item[i - 1] {
+        //                            var v3: [Int] = item
+        //                            v3.insert(num, at: i)
+        //                            v2.append(v3)
+        //                        }
+        //                    }
+        //                }
+        //
+        //                if num != item[c - 1]{ // 尾
+        //                    v3 = item
+        //                    v3.append(num)
+        //                    v2.append(v3)
+        //                }
+        //
+        //                v1.append(contentsOf: v2)
+        //            }
+        //
+        //            rv = v1
+        //        }
+        //
+        //        if l >= maxi{
+        //            return rv
+        //        }
+        //
+        //        // 再把后面铁定有重复的部分 - 插入
+        //        for j in (l + 1)...maxi{
+        //            let num = newNums[j]
+        //
+        //            var v1: [[Int]] = []
+        //
+        //            for item in rv{
+        //                var v2: [[Int]] = []
+        //
+        //                let c = item.count
+        //
+        //                for i in 0..<c{
+        //                    if item[i] != num{
+        //                        var v3: [Int] = item
+        //                        v3.insert(num, at: i)
+        //                        v2.append(v3)
+        //                    }
+        //                }
+        //
+        //                // 尾
+        //                var v3: [Int] = item
+        //                v3.append(num)
+        //                v2.append(v3)
+        //
+        //                v1.append(contentsOf: v2)
+        //            }
+        //
+        //            rv = v1
+        //        }
+        //
+        //        return rv
+        //    }
     }
     
     /// 螺旋矩阵
@@ -493,7 +493,7 @@ extension LeetCode{
         
         var rv: [Int] = []
         
-//        var direction: Int = 4 // 上 下 左 右 1、2、3、4
+        //        var direction: Int = 4 // 上 下 左 右 1、2、3、4
         
         while left <= right && top <= bottom {
             
@@ -1038,4 +1038,69 @@ extension LeetCode{
         
         return [a, b]
     }
+    
+    /// 分隔链表
+    func _725(_ root: ListNode?, _ k: Int) -> [ListNode?] {
+        if k == 1{ return [root] }
+        
+        var tc: Int = 0
+        var cn: ListNode? = root
+        while cn != nil{ // 遍历出总数
+            tc += 1
+            cn = cn?.next
+        }
+        
+        let c: Int = tc / k
+        let remainder: Int = tc % k
+        let c1: Int = c + 1
+        
+        var rv: [ListNode?] = [ListNode?].init(repeating: nil, count: k)
+        if root == nil { return rv }
+        rv[0] = root
+        
+        cn = root
+        
+        var c2: Int = 0
+        
+        var i: Int = 0
+        while cn != nil{
+            
+            c2 += 1
+            
+            if i < remainder{ // c1
+                if c2 >= c1{
+                    i += 1
+                    c2 = 0
+                    
+                    rv[i] = cn?.next
+                    cn?.next = nil
+                    cn = rv[i]
+                }
+                else{
+                    cn = cn?.next
+                }
+            }
+            else{ // c
+                if c2 >= c{
+                    i += 1
+                    c2 = 0
+                    
+                    if i < k{
+                        rv[i] = cn?.next
+                        cn?.next = nil
+                        cn = rv[i]
+                    }
+                    else{
+                        break
+                    }
+                }
+                else{
+                    cn = cn?.next
+                }
+            }
+        }
+        
+        return rv
+    }
+    
 }
