@@ -659,6 +659,30 @@ extension LeetCode{
         return rv
     }
     
+    /// 旋转数组
+    func _189(_ nums: inout [Int], _ k: Int) {
+        let tc: Int = nums.count
+        
+        if k > tc{
+            return _189(&nums, k % tc)
+        }
+        
+        let midx: Int = tc - k
+        var temporary: [Int] = [Int].init(repeating: 0, count: k)
+        
+        for i in 0..<k{
+            temporary[i] = nums[i + midx]
+        }
+        
+        for i in (k..<tc).reversed(){
+            nums.swapAt(i, i - k)
+        }
+        
+        for i in 0..<k{
+            nums[i] = temporary[i]
+        }
+    }
+    
     /// 231. 2的幂
     func _231(_ n: Int) -> Bool{
         return n > 0 && n & (n - 1) == 0
