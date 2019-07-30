@@ -481,6 +481,115 @@ extension LeetCode{
     //    }
     }
     
+    /// 螺旋矩阵
+    func _54(_ matrix: [[Int]]) -> [Int] {
+        
+        if matrix.isEmpty { return [] }
+        
+        var left: Int = 0
+        var top: Int = 0
+        var right: Int = matrix[0].count - 1
+        var bottom: Int = matrix.count - 1
+        
+        var rv: [Int] = []
+        
+//        var direction: Int = 4 // 上 下 左 右 1、2、3、4
+        
+        while left <= right && top <= bottom {
+            
+            // Top - 从左到右
+            if left > right{
+                break
+            }
+            for i in left...right{
+                rv.append(matrix[top][i])
+            }
+            top += 1
+            
+            // Right - 从上到下
+            if top < bottom{
+                for i in top..<bottom{
+                    rv.append(matrix[i][right])
+                }
+            }
+            
+            // Bottom - 从右到左
+            if top <= bottom{
+                for i in stride(from: right, through: left, by: -1){
+                    rv.append(matrix[bottom][i])
+                }
+            }
+            else{
+                break
+            }
+            right -= 1
+            bottom -= 1
+            
+            // Left - 从下到上
+            if top <= bottom && left <= right{
+                for i in stride(from: bottom, through: top, by: -1){
+                    rv.append(matrix[i][left])
+                }
+            }
+            left += 1
+        }
+        
+        return rv
+    }
+    
+    /// 螺旋矩阵 II
+    func _59(_ n: Int) -> [[Int]] {
+        var rv: [[Int]] = [[Int]].init(repeating: [Int].init(repeating: 0, count: n), count: n)
+        
+        let tc: Int = n * n
+        var cc: Int = 1
+        
+        var l: Int = 0
+        var r: Int = n - 1
+        var t: Int = 0
+        var b: Int = n - 1
+        
+        while cc < tc{
+            // Top - 从左到右
+            for i in l...r{
+                rv[t][i] = cc
+                cc += 1
+            }
+            t += 1
+            
+            // Right - 从上到下
+            if b > t{
+                for i in t..<b{
+                    rv[i][r] = cc
+                    cc += 1
+                }
+            }
+            
+            // Bottom - 从右到左
+            for i in (l...r).reversed(){
+                rv[b][i] = cc
+                cc += 1
+            }
+            r -= 1
+            b -= 1
+            
+            // Left - 从下到上
+            if b >= t{
+                for i in (t...b).reversed(){
+                    rv[i][l] = cc
+                    cc += 1
+                }
+            }
+            l += 1
+        }
+        
+        if cc == tc{
+            rv[l][t] = cc
+        }
+        
+        return rv
+    }
+    
     /// 不同路径 - 63的算法也可适用于此题
     func _62(_ m: Int, _ n: Int) -> Int {
         var paths = [[Int]].init(repeating: [Int].init(repeating: 1, count: n), count: m) // 记录到当前节点的路径数量

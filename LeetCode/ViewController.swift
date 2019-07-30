@@ -13,42 +13,32 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        let nums: [[Int]] = [
+//            [1, 2, 3],
+//            [8, 9, 4],
+//            [7, 6, 5]]
+        
+//        let nums: [[Int]] = [
+//            [1, 2],
+//            [4, 3]]
+        
+//        let nums: [[Int]] = [[2,5,8],
+//                             [4,0,-1]]
 
-//        let n11 = ListNode.init(1)
-//        let n12 = ListNode.init(4)
-//        let n13 = ListNode.init(5)
-//        n11.next = n12
-//        n12.next = n13
-//
-//
-//        let n21 = ListNode.init(1)
-//        let n22 = ListNode.init(3)
-//        let n23 = ListNode.init(4)
-//        n21.next = n22
-//        n22.next = n23
-//
-//
-//        let n31 = ListNode.init(2)
-//        let n32 = ListNode.init(6)
-//        n31.next = n32
         
-//        let n11 = ListNode.init(-1)
-//        let n12 = ListNode.init(5)
-//        let n13 = ListNode.init(1)
-//        let n14 = ListNode.init(1)
-//        n11.next = n12
-//        n12.next = n13
-//        n13.next = n14
-//
-//        let n21 = ListNode.init(6)
-//        let n22 = ListNode.init(1)
-//        let n23 = ListNode.init(0)
-//        n21.next = n22
-//        n22.next = n23
+//        let nums: [[Int]] = [[1, 2, 3, 4, 5, 6, 7]]
         
-        let nums: [Int] = [1, 2, 3]
-            
-        let v = LeetCode.shared._47(nums)
+//        let nums: [[Int]] = [
+//            [1],
+//            [2],
+//            [3],
+//            [4],
+//            [5]]
+        
+        let nums: [[Int]] = [[2,3,4],[5,6,7],[8,9,10],[11,12,13],[14,15,16]]
+        
+        let v = LeetCode.shared._59(1)
         print(v)
     }
     
