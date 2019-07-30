@@ -590,6 +590,48 @@ extension LeetCode{
         return rv
     }
     
+    /// 旋转链表
+    func _61(_ head: ListNode?, _ k: Int) -> ListNode? {
+        var preNode: ListNode? = nil
+        var i: Int = 0
+        
+        var cn: ListNode? = head
+        
+        while i < k || cn != nil{
+            if i == k{
+                if preNode == nil{
+                    preNode = head
+                }
+                else{
+                    preNode = preNode?.next
+                }
+                
+                cn = cn?.next
+            }
+            else{
+                i += 1
+                
+                if cn?.next == nil{
+                    return _61(head, k % i)
+                }
+                else{
+                    cn = cn?.next ?? head
+                }
+            }
+        }
+        
+        let rv: ListNode? = preNode?.next ?? head
+        
+        cn = rv
+        while cn?.next != nil{
+            cn = cn?.next
+        }
+        cn?.next = head
+        preNode?.next = nil
+        
+        return rv
+    }
+    
     /// 不同路径 - 63的算法也可适用于此题
     func _62(_ m: Int, _ n: Int) -> Int {
         var paths = [[Int]].init(repeating: [Int].init(repeating: 1, count: n), count: m) // 记录到当前节点的路径数量

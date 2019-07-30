@@ -14,32 +14,26 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let nums: [[Int]] = [
-//            [1, 2, 3],
-//            [8, 9, 4],
-//            [7, 6, 5]]
+        let n1: ListNode = ListNode.init(1)
+        let n2: ListNode = ListNode.init(2)
+        let n3: ListNode = ListNode.init(3)
+        let n4: ListNode = ListNode.init(4)
+        let n5: ListNode = ListNode.init(5)
         
-//        let nums: [[Int]] = [
-//            [1, 2],
-//            [4, 3]]
+        n1.next = n2
+//        n2.next = n3
+//        n3.next = n4
+//        n4.next = n5
         
-//        let nums: [[Int]] = [[2,5,8],
-//                             [4,0,-1]]
-
+        var v = LeetCode.shared._61(n1, 3)
         
-//        let nums: [[Int]] = [[1, 2, 3, 4, 5, 6, 7]]
-        
-//        let nums: [[Int]] = [
-//            [1],
-//            [2],
-//            [3],
-//            [4],
-//            [5]]
-        
-        let nums: [[Int]] = [[2,3,4],[5,6,7],[8,9,10],[11,12,13],[14,15,16]]
-        
-        let v = LeetCode.shared._59(1)
-        print(v)
+        while v?.next != nil{
+            print(v!.val)
+            v = v?.next
+        }
+        if let v2 = v?.val{
+            print(v2)
+        }
     }
     
     func 排序(){
