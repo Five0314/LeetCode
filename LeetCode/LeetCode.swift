@@ -782,6 +782,70 @@ extension LeetCode{
         return false
     }
     
+    /// 两整数之和
+    func _371(_ a: Int, _ b: Int) -> Int {
+//        print(" ")
+//        print("a : \(a) \(String.init(a, radix: 2, uppercase: false))")
+//        print("b : \(b) \(String.init(b, radix: 2, uppercase: false))")
+
+        let x = a ^ b
+        let y = a & b
+
+//        print("a ^ b = \(x)")
+//        print("a & b = \(y)")
+
+        return b == 0 ? a : _371(x, y << 1)
+        
+//        print('当前加数为：{}'.format(oct2bin(num1)))
+//        print('当前加数为：{}'.format(oct2bin(num2)))
+        
+//        var num1 = a1
+//        var num2 = b1
+//        var a = 0
+//        var b = 0
+//        var c = 0
+//
+//        var ans = 0                    // # 结果变量
+//        var mask = 0x01                // # 这个掩码是用来提取指定位的值的
+//        var carry = 0                  // # 进位
+//        for i in 0...32{     // # 32位中遍历
+//            a = num1 & mask         //# 提取当前位
+//            b = num2 & mask         //# 提取当前位
+//            c = carry              //# 提取上一步进位
+//            carry = 0               //# 当前步进位归零
+//            if a ^ b != 0{          //# 如果两个计算数中有一个为一，另一个是零
+//                if c == 1{          //# 上一步进位为一
+//                    carry = 1 //# 则当前一定会产生进位，当前位计算结果为零，ans不用动
+//                }
+//                else{            // # 上一步进位为零
+//                    ans |= mask     //# 当前不产生进位，当前位计算结果为一
+//                }
+//            }
+//            else{                  // # 如果两个计算数中均为一或者均为零
+//                if a & mask > 0{   // # 研究两个计算数均为一的情况
+//                    carry = 1      // # 进位肯定是要的
+//                }
+//                if c == 1{        //  # 如果上一步有一个进位
+//                    ans |= mask   //  # 那么当前结果就是一
+//                }
+//                mask = mask << 1      //  # 我们把掩码向左移动一位，开始研究更高的一位
+//            }
+//        }
+//
+//        //        print('\n当前遍历到了从低向高第{}位。'.format(i))
+//        //        print('当前掩码为：{}'.format(oct2bin(mask)))
+//        //        print('当前加数一：{}'.format(oct2bin(a)))
+//        //        print('当前加数二：{}'.format(oct2bin(b)))
+//        //        print('当前结果为：{}'.format(oct2bin(ans)))
+//
+//
+//        if ans > 0x7fffffff{       // # 这种情况说明可能得到了负数
+//            return ans - 0xffffffff - 1     //# 返回负数的计算结果
+//        }
+//
+//        return ans                  //# 返回最终结果
+    }
+    
     /// 找不同
     func _389(_ s: String, _ t: String) -> Character {
         var rv: UInt8 = 0
@@ -1661,6 +1725,38 @@ extension LeetCode{
         }
         
         return [a, b]
+    }
+    
+    /// 最大单词长度乘积
+    func _318(_ words: [String]) -> Int {
+        
+        var length: [Int] = [Int].init(repeating: 0, count: words.count)
+        var intValue: [Int] = [Int].init(repeating: 0, count: words.count)
+        
+        for (idx, item) in words.enumerated(){
+            let v = self._318_ConvertWordToInt(item)
+            
+            length[idx] = words[idx].count
+            intValue[idx] = v
+            
+            print(" ")
+            print(item)
+            print(v)
+            print(String.init(v, radix: 2, uppercase: false))
+        }
+        
+        return 0
+    }
+    
+    fileprivate func _318_ConvertWordToInt(_ str: String) -> Int{
+        
+        var rv: Int = 0
+        
+        for item in Array(str.data(using: .utf8) ?? Data()){
+            rv |= 1 << (item - 97)
+        }
+        
+        return rv
     }
 }
 
