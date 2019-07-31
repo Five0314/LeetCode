@@ -1015,6 +1015,28 @@ extension LeetCode{
         return rv
     }
     
+    /// 除自身以外数组的乘积
+    func _238(_ nums: [Int]) -> [Int] {
+        
+        var rv: [Int] = [Int].init(repeating: 0, count: nums.count)
+        
+        var s: Int = 1
+        
+        for i in 0..<rv.count{
+            rv[i] = s // s = i 左边所有元素的积
+            s *= nums[i]
+        }
+        
+        s = 1
+        for i in (0..<rv.count).reversed(){
+            rv[i] *= s // s = i 右边所有元素的积，上面的遍历已经算出了左边所有原的积，则两者相乘 = 除了自身外所有元素的积
+            s *= nums[i]
+        }
+
+        
+        return rv
+    }
+    
     /// 只出现一次的数字 III
     func _260(_ nums: [Int]) -> [Int] {
         

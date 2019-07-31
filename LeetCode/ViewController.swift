@@ -15,36 +15,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
 
-    }
-    
-    func 排序(){
-        var a = [23, 12, 34, 2, 67, 5, 43, 123, 432, 32, 44, 1, 31, 24, 21, 26, 13, 15, 16, 7, 8]
-        print(Date().timeIntervalSince1970)
-        CNSSort.shared.希尔排序(&a)
-        //        CNSSort.插入排序(&a)
-        print(Date().timeIntervalSince1970)
-        print(a)
-    }
-    
-    /// 寻找大小为n的数组中出现次数超过n/2的那个数
-    func findNum(_ array: [Int]){
-        let arr = [1, 3, 2, 3, 4]
-        
-        var ntime = 0 //表示其中某一个数出现的次数
-        var result = arr[0]
-        for item in arr{
-            if ntime == 0{
-                result = item
-                ntime = 1
-            }
-            else{
-                if result == item{
-                    ntime += 1
-                }
-                else{
-                    ntime -= 1
-                }
-            }
-        }
+        let nums: [Int] = [1, 2, 3, 4]
+        let v = LeetCode.shared._238(nums)
+        print(v)
     }
 }
