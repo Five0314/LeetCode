@@ -436,6 +436,64 @@ extension LeetCode{
         }
     }
     
+    /// 二叉树的最大深度
+    func _104(_ root: TreeNode?) -> Int {
+        if root == nil { return 0 }
+        
+//        // 递归
+//        return max(_104(root?.left), _104(root?.right)) + 1
+        
+        // 迭代 - 栈
+        var stack: [(TreeNode?, Int)] = []
+        
+        var lastNode: (TreeNode?, Int) = (root, 1)
+        stack.append(lastNode)
+        
+        var rv: Int = 0
+        
+        while !stack.isEmpty{
+            lastNode = stack.removeLast()
+            if rv < lastNode.1 { rv = lastNode.1 }
+            
+            if lastNode.0?.left != nil{
+                stack.append((lastNode.0?.left, lastNode.1 + 1))
+            }
+            
+            if lastNode.0?.right != nil{
+                stack.append((lastNode.0?.right, lastNode.1 + 1))
+            }
+        }
+        
+        return rv
+    }
+//    func _104(_ root: TreeNode?) -> Int {
+//        if root == nil { return 0 }
+//
+//        var rv: Int = 1
+//
+//        var stack: [TreeNode] = []
+//
+//        stack.append(root!)
+//
+//        while !stack.isEmpty{
+//
+//        }
+//
+//        while true{
+//            if let v = stack.last?.left{
+//                stack.append(v)
+//                continue
+//            }
+//
+//            if let v = stack.last?.right{
+//                stack.append(v)
+//                continue
+//            }
+//        }
+//
+//        return rv
+//    }
+    
     /// 验证回文串
     func _125(_ s: String) -> Bool{
         guard let cs = s.cString(using: .ascii)?.filter({ (item) -> Bool in
