@@ -8,6 +8,8 @@
 
 import UIKit
 
+var maxSum: Int = Int.min
+
 //MARK: 困难
 extension LeetCode{
     
@@ -236,6 +238,27 @@ extension LeetCode{
         }
         
         return lists_2.first ?? nil
+    }
+    
+    /// 二叉树中的最大路径和
+    func _124(_ root: TreeNode?) -> Int {
+        _ = maxSumAtRoot(root: root)
+        return maxSum
+    }
+    private func maxSumAtRoot(root: TreeNode?) -> Int {
+        
+        if nil == root {
+            return 0
+        }
+        
+        // max(0, x) 才是核心
+        let maxLeft = max(0, maxSumAtRoot(root: root?.left))
+        let maxRight = max(0, maxSumAtRoot(root: root?.right))
+        
+        let val = root!.val
+        let maxAtRoot = val + max(maxRight, maxLeft)
+        maxSum = max(maxSum, val + maxRight + maxLeft)
+        return maxAtRoot
     }
     
     // KMP算法的核心，是一个被称为部分匹配表(Partial Match Table)的数组。

@@ -18,21 +18,31 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//
+//        let n1: TreeNode = TreeNode.init(1)
+//        let n2: TreeNode = TreeNode.init(2)
+//        let n3: TreeNode = TreeNode.init(3)
+//        let n4: TreeNode = TreeNode.init(0)
+//        let n5: TreeNode = TreeNode.init(-6)
         
-        let n1: TreeNode = TreeNode.init(3)
-        let n2: TreeNode = TreeNode.init(9)
-        let n3: TreeNode = TreeNode.init(20)
-        let n4: TreeNode = TreeNode.init(15)
-        let n5: TreeNode = TreeNode.init(7)
+        let n1: TreeNode = TreeNode.init(-2)
+        let n2: TreeNode = TreeNode.init(-1)
+        let n3: TreeNode = TreeNode.init(-9)
+        let n4: TreeNode = TreeNode.init(-8)
+        let n5: TreeNode = TreeNode.init(3)
+        let n6: TreeNode = TreeNode.init(-2)
         
-        n1.left = n2
-        n1.right = n3
+        n1.right = n2
         
-        n3.left = n4
-        n3.right = n5
+//        n2.left = n3
+//        n2.right = n4
+//
+//        n4.right = n5
+//
+//        n5.right = n6
         
-//        let nums: [Int] = [1, 2, 3, 4]
-        let v = LeetCode.shared._104(n1)
+        let v = LeetCode.shared._124(n1)
+        
         print(v)
     }
 }
