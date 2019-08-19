@@ -103,55 +103,35 @@ class CNSSort{
     }
     
     /// 通过一趟排序将待排记录分隔成独立的两部分，其中一部分记录的关键字均比另一部分的关键字小，则可分别对这两部分记录继续进行排序，以达到整个序列有序。
-    func 快速排序(_ arr: inout [Int]){
-        var ranges = [(0, arr.count - 1)]
+    func 快速排序(_ nums: inout [Int]){
+        var stack: [(Int, Int)] = [(0, nums.count - 1)]
         
-        var mv = 0
+        var left: Int = 0
         
-        while !ranges.isEmpty{
-            let v = ranges.removeFirst()
+        while !stack.isEmpty{
+            let range = stack.removeLast()
             
-            let newRanges = self.快速排序_分割(&arr, l: v.0, r: v.1, mv: &mv)
-            if !newRanges.isEmpty{
-                ranges.insert(contentsOf: newRanges, at: 0)
-            }
-        }
-    }
-    
-    fileprivate func 快速排序_分割(_ arr: inout [Int], l: Int, r: Int, mv: inout Int) -> [(Int, Int)] {
-        if r <= l{
-            return []
-        }
-        
-        if r == l + 1{
-            if arr[l] > arr[r]{
-                mv = arr[r]
-                arr[r] = arr[l]
-                arr[l] = mv
+            let mid = nums[range.0]
+            
+            left = range.0
+            
+            for i in range.0...range.1{
+                if nums[i] < mid {
+                    left += 1
+                    nums.swapAt(left, i)
+                }
             }
             
-            return []
-        }
-        
-        let compareValue = arr[l]
-        
-        var startIndexOfBiggerValue = l + 1
-        
-        for i in startIndexOfBiggerValue...r{
-            if arr[i] < compareValue{
+            if range.0 != left{
+                nums.swapAt(range.0, left)
                 
-                mv = arr[startIndexOfBiggerValue]
-                arr[startIndexOfBiggerValue] = arr[i]
-                arr[i] = mv
-                
-                startIndexOfBiggerValue += 1
+                stack.append((range.0, left - 1))
+            }
+            
+            if range.1 > left {
+                stack.append((left + 1, range.1))
             }
         }
-        
-        arr[l] = arr[startIndexOfBiggerValue - 1]
-        arr[startIndexOfBiggerValue - 1] = compareValue
-        
-        return [(l, startIndexOfBiggerValue - 2), (startIndexOfBiggerValue, r)]
     }
     
     /// 采用分治法 - 将已有序的子序列合并，得到完全有序的序列
