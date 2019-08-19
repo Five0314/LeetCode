@@ -18,6 +18,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let nums: [Int] = [3,2,1,5,6,4]
+        let v = LeetCode.shared._215(nums, 2)
+        print(v)
     }
 
 }

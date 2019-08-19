@@ -912,6 +912,85 @@ extension LeetCode{
         return l << count
     }
     
+    /// 数组中的第K个最大元素 - 升序的第 nums.count-K 个元素 、 降序的第 K-1 个元素 - 本方法采用升序
+    func _215(_ nums: [Int], _ k: Int) -> Int {
+        
+        let tagIndex: Int = nums.count - k
+
+        var newNums = nums
+        var ranges: [(Int, Int)] = [(0, newNums.count - 1)]
+        var left: Int = 0
+
+        while !ranges.isEmpty {
+            let range = ranges.removeLast()
+
+            let ii = Int.random(in: range.0...range.1) // 为毛来这两行代码呢，其实就是赌，万一随机到的数字正好是目标数字呢，测试结果就是这个概率还是比较高的。没有这两行，时间在168ms，有这两行是72ms
+            newNums.swapAt(range.0, ii)
+            let mid = newNums[range.0]
+            left = range.0
+
+            for i in range.0...range.1{
+                if newNums[i] < mid{
+                    left += 1
+                    newNums.swapAt(i, left)
+                }
+            }
+
+            if left == tagIndex{
+                return mid
+            }
+
+            newNums.swapAt(range.0, left)
+            if left > tagIndex{
+                ranges.append((range.0, left - 1))
+            }
+
+            if left < tagIndex{
+                ranges.append((left + 1, range.1))
+            }
+        }
+
+        return newNums[tagIndex]
+//        var nums = nums
+//        return quick(nums: &nums, from: 0, to: nums.count - 1, k: k - 1)
+    }
+    
+//    func quick(nums: inout [Int], from: Int, to: Int, k: Int) -> Int {
+//        if from == to {
+//            return nums[from]
+//        }
+//        let index = split(nums: &nums, from: from, to: to)
+//        if index == k {
+//            return nums[k]
+//        } else if index < k  {
+//            return quick(nums: &nums, from: index + 1, to: to, k: k)
+//        } else if index > k {
+//            return quick(nums: &nums, from: from, to: index - 1, k: k)
+//        }
+//
+//        return 0
+//    }
+//
+//    func randomPivot(_ a: inout [Int], _ low : Int , _ high : Int) -> Int {
+//        let pivot = Int.random(in: low..<high)
+//        a.swapAt(pivot, high)
+//        return a[high]
+//    }
+//
+//    func split(nums: inout [Int], from: Int, to: Int) -> Int {
+//        let pivot = randomPivot(&nums, from, to)
+//        var i = from
+//        for j in from...to {
+//            if nums[j] > pivot {
+//                nums.swapAt(i, j)
+//                i += 1
+//            }
+//        }
+//        nums.swapAt(to, i)
+//        return i
+//    }
+    
+    
     /// 求众数 II
     func _229(_ nums: [Int]) -> [Int] {
         
