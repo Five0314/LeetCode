@@ -249,6 +249,34 @@ extension LeetCode{
         return rv + target
     }
     
+    /// 删除链表的倒数第N个节点
+    func _19(_ head: ListNode?, _ n: Int) -> ListNode? {
+        
+        var i: Int = 0
+        
+        var pTagNode: ListNode? = nil
+        
+        var cn: ListNode? = head
+        
+        while cn != nil{
+            if i == n{
+                pTagNode = pTagNode?.next ?? head
+            }
+            else {
+                i += 1
+            }
+            
+            cn = cn?.next
+        }
+        
+        if pTagNode == nil{
+            return head?.next
+        }
+        
+        pTagNode?.next = pTagNode?.next?.next
+        return head
+    }
+    
     /// 搜索旋转排序数组
     func _33(_ nums: [Int], _ target: Int) -> Int {
         
